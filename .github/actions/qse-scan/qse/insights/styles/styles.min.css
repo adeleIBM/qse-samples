@@ -1,0 +1,7569 @@
+/*
+ * IBM Confidential
+ * PID 5900-B4I
+ * Copyright (c) IBM Corp. 2025
+ */
+
+body {
+	font-family: var(--qs-ibm-font-family);
+	margin: 0;
+	padding: 0;
+}
+
+.mb-15 {
+	margin-bottom: 15px;
+}
+
+.mb-10 {
+	margin-bottom: 10px;
+}
+
+.mb-5 {
+	margin-bottom: 5px;
+}
+
+.container {
+	margin: 12px;
+}
+
+/* Styling for the accordion */
+.arrow-rotate {
+	transform: rotate(180deg);
+}
+
+.custom-accordion__heading {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	padding: 16px;
+	cursor: pointer;
+}
+
+.custom-accordion__title {
+	margin: 0;
+	z-index: 0;
+}
+
+.function-calls .custom-accordion__title,
+.vulnerabilities .custom-accordion__title {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px;
+	letter-spacing: 0.16px;
+	word-break: break-all;
+}
+
+.vulnerabilities .custom-accordion__title {
+	padding-right: 10px;
+}
+
+.custom-accordion__content {
+	display: none;
+	padding: 0;
+}
+
+.custom-accordion__content--visible {
+	display: block;
+}
+
+.function-call-text-header {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+/* Optional styling for the tree view */
+.bx--tree-list {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.bx--tree-node {
+	display: flex;
+	flex-direction: column;
+}
+
+.bx--tree-btn {
+	display: flex;
+	border: none;
+	cursor: pointer;
+	padding: 0.5rem 0;
+	align-items: center;
+}
+
+.parameter-sub-tree-node {
+	padding-left: 1rem !important;
+}
+
+.bx--tree-node-label {
+	margin-left: 8px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 18px;
+	text-align: left;
+}
+
+.bx--data-table-container {
+	position: static !important;
+}
+
+.bx--table-header {
+	font-weight: bold;
+}
+
+.bx--table-body-cell {
+	padding: 8px;
+}
+
+/* Custom Styles */
+.head-title {
+	text-align: right;
+}
+
+.download-wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.bx--btn--icon-only {
+	border: none;
+}
+
+.parameter-tracing-tile {
+	margin-bottom: 15px;
+}
+
+h4.bx--tile-title {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 26px;
+	letter-spacing: 0.16px;
+	padding: 0 1rem;
+	margin-bottom: 10px;
+}
+
+
+.vulnerabilities-desc {
+	padding: 10px;
+	max-width: 100%;
+	word-wrap: break-word;
+}
+
+.function-calls-desc {
+	padding-left: 10px;
+	margin-left: 20px;
+	max-width: 350px;
+	word-wrap: break-word;
+	max-height: 360px;
+	overflow: auto;
+}
+
+.function-calls-desc p,
+.vulnerabilities-desc p,
+.vul-reference-list {
+	margin-bottom: 10px;
+}
+
+.hidden {
+	display: none;
+}
+
+.function-calls svg.bx--icon {
+	margin: 0px 5px -2px -5px;
+}
+
+.bx--tile.function-calls-tile,
+.bx--tile.vulnerabilities-tile {
+	padding: 1rem 0 0 0;
+}
+
+.bx--tile.function-calls-tile {
+	padding-bottom: 0;
+	min-height: 100%;
+	display: contents;
+}
+
+.bx--tile.properties-tile {
+	padding: 1rem 0.5rem 0 0.5rem;
+	min-height: 9rem;
+}
+
+.bx--tile.function-calls-tile .bx--tile-content,
+.bx--tile.properties-tile .bx--tile-content {
+	height: auto;
+}
+
+button.function-tree-btn:focus,
+button.function-tree-btn::selection {
+	width: 100%;
+}
+
+.selected-asset-name {
+	padding-left: 10px;
+}
+
+.no-mb {
+	margin-bottom: 0;
+}
+
+.no-pd {
+	padding: 0;
+}
+
+.crypto-filters {
+	border: none;
+	padding: 6px;
+}
+
+.crypto-filters:hover,
+.crypto-filters:focus {
+	outline: none;
+}
+
+.grid-container {
+	display: block;
+	width: 100%;
+	position: relative;
+}
+
+.grid-item {
+	display: inline-block;
+	vertical-align: top;
+	height: 100%;
+}
+
+.grid-container .grid-item.p-container:not(.hide) {
+	grid-column: 1 / 2;
+	grid-row: 1;
+	width: 35%;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.grid-container .grid-item.v-container:not(.no-properties) {
+	grid-column: 2 / 3;
+	grid-row: 1;
+	width: 31%;
+}
+
+.grid-container .grid-item.fx-container:not(.no-properties) {
+	grid-column: 3 / 5;
+	grid-row: 1;
+	width: 33%;
+}
+
+.grid-container .grid-item.v-container.no-properties {
+	grid-column: 1 / 2;
+	grid-row: 1;
+	width: 33%;
+}
+
+.grid-container .grid-item.fx-container.no-properties {
+	grid-column: 2 / 4;
+	grid-row: 1;
+	width: fit-content;
+	max-width: 60%;
+}
+
+.filter-grid-container {
+	display: grid;
+	grid-template-rows: repeat(12, 1fr);
+	gap: 10px;
+	width: 100%;
+}
+
+.hide {
+	display: none !important;
+}
+
+.vulnerabilities-chart,
+.algorithms-chart {
+	width: 250px;
+	padding: 16px;
+	margin-bottom: 6px;
+	border-radius: 4px;
+}
+
+.labelBox {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	margin-right: 8px;
+}
+
+.legend-item {
+	margin-top: 6px;
+}
+
+.legend-item span {
+	font-family: var(--qs-ibm-font-family);
+	font-size: 11px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 10px;
+}
+
+.header-tile-content {
+	display: flex;
+	position: relative;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.info-tooltip {
+	margin-left: auto;
+	margin-bottom: 10px;
+	background: transparent;
+	border: none;
+}
+
+.crypto-header-wrapper {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+
+}
+
+.crypto-header-1 {
+	grid-column: 1 / 5;
+	grid-row: 1;
+}
+
+.crypto-header-2 {
+	grid-column: 5;
+	grid-row: 1;
+}
+
+.crypto-header-3 {
+	grid-column: 6;
+	grid-row: 1;
+}
+
+.crypto-header-4 {
+	grid-column: 7;
+	grid-row: 1;
+}
+
+.crypto-header-5 {
+	grid-column: 8;
+	grid-row: 1;
+}
+
+.crypto-header-6 {
+	grid-column: 9;
+	grid-row: 1;
+}
+
+.crypto-header-7 {
+	grid-column: 10;
+	grid-row: 1;
+}
+
+.crypto-head-title {
+	font-size: 28px;
+	margin-bottom: 2px;
+	font-weight: 300;
+}
+
+.metrics-header-title {
+	font-weight: 400;
+}
+
+.crypto-header-wrapper .bx--tile-content {
+	height: unset;
+}
+
+.bx--table-head-cell {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px;
+	letter-spacing: 0.16px;
+}
+
+.crypt-header-stats p,
+.crypto-header-name p {
+	text-wrap: wrap;
+	max-width: 102px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	letter-spacing: 0.16px;
+}
+
+.parameter-tracing-tile .bx--tree {
+	padding: 5px;
+}
+
+.function-calls-tile svg.bx--icon.qs-list-closed {
+	transform: rotate(270deg);
+	margin-left: 6px;
+}
+
+.function-calls-tile svg.bx--icon.qs-list {
+	transform: rotate(270deg);
+	margin-right: 4px;
+}
+
+.asset-wrapper {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 5px;
+}
+
+.asset-wrapper .crypto-list-section {
+	grid-column: 1 / 7;
+	grid-row: 1;
+}
+
+.asset-wrapper .crypto-list-section.no-charts {
+	grid-column: 1 / 7;
+	grid-row: 1;
+}
+
+.asset-wrapper .donut-chart-container {
+	grid-column: 6;
+	grid-row: 1;
+}
+
+.qs-header {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+.custom-accordion__heading.function-calls,
+.custom-accordion__heading.vulnerabilities {
+	max-width: 100%;
+	word-wrap: break-word;
+}
+
+.custom-accordion__heading.function-calls {
+	padding-right: 4px;
+}
+
+.donut-section {
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+
+.donut-inner {
+	position: absolute;
+	top: 0;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	height: 100%;
+}
+
+.donut-inner h5 {
+	font-size: 76px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 86px;
+}
+
+.donut-inner span {
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 22px;
+}
+
+/* .vulnerabilities-grid */
+.function-calls-grid {
+	overflow: auto;
+}
+
+.function-calls-tile .custom-accordion__item {
+	border: none;
+}
+
+
+
+/* Filter Styles */
+#filterGrid {
+	padding-right: 0px;
+}
+
+.filtersTitle {
+	display: flex;
+	flex-direction: row;
+	padding: 10px 10px 10px 16px !important;
+	margin-bottom: 0px !important;
+	align-items: center;
+}
+
+.filtersTitle .filterCountWrpr {
+	margin-right: 8px;
+	margin-top: 3px;
+}
+
+.filtersTitle .filterCount {
+	padding: 3px 5px;
+	border-radius: 8px;
+	display: block;
+	font-size: 9px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 10px;
+	height: 15px;
+	width: 15px;
+	background-color: var(--darkContrast-purple-color);
+	color: var(--qs-dark-text-color);
+}
+
+.filter-count-tag {
+	text-align: center;
+	border-radius: 8px;
+	height: 15px;
+	width: 15px;
+	font-size: 9px;
+	font-style: normal;
+	font-weight: 700;
+	position: absolute;
+	right: 32px;
+	line-height: normal;
+	display: inline-flex;
+	padding: 1px 5px;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	color: var(--qs-dark-text-color);
+	background-color: var(--darkContrast-purple-color);
+}
+
+
+.filter-wrapper .filter-accordion__content.bx--accordion__content {
+	padding: 8px 16px 16px 16px;
+}
+
+.bx--accordion__heading.filter-accordion__heading:focus::before {
+	border: none;
+}
+
+
+.filter-wrapper .filter-accordion__content--hidden {
+	display: none !important;
+}
+
+.filter-accordion__heading:hover::before {
+	background: var(--qs-transparent-color);
+}
+
+.filter-wrapper .filter-accordion__title {
+	margin-left: 0px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px;
+	letter-spacing: 0.16px;
+}
+
+.filter-wrapper .filter-accordion__heading {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	cursor: pointer;
+	padding: 14px 0px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px;
+	letter-spacing: 0.16px;
+}
+
+.horizontal-radio-group {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.horizontal-radio-group label.bx--radio-button__label {
+	width: 100%;
+	margin-bottom: 8px;
+	margin-right: 0px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+	letter-spacing: 0.16px;
+}
+
+.filter-wrapper .filter-radio {
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	cursor: pointer;
+	outline: none;
+	transition: box-shadow 0.3s ease;
+	margin: 0px 8px 0px 0px;
+}
+
+.filter-wrapper .filter-radio:before {
+	content: '';
+	display: block;
+	width: 70%;
+	height: 70%;
+	margin: 15% auto;
+	border-radius: 50%;
+}
+
+.vulnerabilities.bg-header-accordion svg.bx--icon.qs-list,
+.assets-list.bg-header-accordion svg.bx--icon.qs-list {
+	transform: rotate(180deg);
+}
+
+.function-calls.bg-header-accordion svg.bx--icon.qs-list {
+	transform: rotate(0deg);
+}
+
+/*Filter Tags*/
+.tag-wrapper {
+	min-height: 45px;
+	width: 100%;
+	padding: 0px 12px;
+	display: flex;
+	align-items: center;
+}
+
+.tag-wrapper .filter-tag {
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	/* 133.333% */
+	letter-spacing: 0.32px;
+	padding: 4px 12px;
+	margin-right: 10px;
+	border-radius: 24px;
+	min-height: 24px;
+}
+
+.filter-tag .bx--tag__close-icon {
+	width: 16px;
+	height: 16px;
+	margin-left: 6px;
+}
+
+.tag-wrapper .panel-right-icons {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+.tag-wrapper .clear-filter {
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	outline: none;
+	box-shadow: none;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	margin-right: 15px;
+	letter-spacing: 0.32px;
+}
+
+.export-btn {
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	outline: none;
+	box-shadow: none;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+	letter-spacing: 0.16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.filter-icon-button {
+	display: inline-flex;
+	border: none;
+	cursor: pointer;
+	background-color: transparent;
+	margin-right: 10px;
+	padding: 8px;
+}
+
+.tag-wrapper .export-icon,
+.tag-wrapper .chart-collapse-icon {
+	padding: 0;
+	margin-right: 8px;
+}
+
+.rotate-90 {
+	transform: rotate(90deg);
+}
+
+.flip-y {
+	transform: scaleY(-1);
+}
+
+.tag-wrapper .export-icon:focus,
+.tag-wrapper .chart-collapse-icon:focus {
+	outline: none;
+}
+
+/***Search bar****/
+.search-container {
+	position: relative;
+}
+
+.search-container .search-icon {
+	position: absolute;
+	left: 16px;
+	top: 52%;
+	height: 16px;
+	width: 16px;
+	transform: translateY(-50%);
+}
+
+.search-container .bx--tag__close-icon.search-clear-icon {
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	height: 14px;
+	width: 14px;
+	transform: translateY(-50%);
+}
+
+.search-container .bx--tag__close-icon.search-clear-icon:focus {
+	box-shadow: none;
+}
+
+.search-container .search-input {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+	letter-spacing: 0.16px;
+	height: 46px;
+	padding-left: 3rem;
+	padding-right: 32px;
+}
+
+.search-container .search-input.bx--text-input:focus,
+.search-container .search-input.bx--text-input:active {
+	outline: none;
+}
+
+.filter-wrapper {
+	min-height: 100%;
+	overflow: auto;
+	position: relative;
+	z-index: 999;
+}
+
+.filter-wrapper,
+.crypto-list-section {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.asset-wrapper,
+.metrics-wrapper {
+	display: none;
+}
+
+.qs--loader__overlay {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	z-index: 9999;
+}
+
+.bx--inline-loading {
+	display: flex;
+	place-self: anchor-center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	justify-content: center;
+}
+
+.filter-checkbox {
+	-webkit-appearance: none;
+	appearance: none;
+	margin: 0;
+	width: 20px;
+	height: 20px;
+	border-radius: 2px;
+	transform: translateY(-0.075em);
+	display: inline-grid;
+	place-content: center;
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+.checkbox-label {
+	display: flex;
+	cursor: pointer;
+	width: 100%;
+	margin: 0 0 8px 0;
+	align-items: center;
+}
+
+/* .filter-accordion__content {
+	max-height: 116px;
+	overflow-y: auto;
+} */
+
+.filter-checkbox:focus {
+	outline: none;
+}
+
+.filter-checkbox::before {
+	content: "";
+	margin-top: 4px;
+	width: 16px;
+	height: 16px;
+	clip-path: polygon(21% 40%, 21% 40%, 8% 54%, 25% 68%, 36% 77%, 47% 65%, 48% 64%, 64% 47%, 75% 35%, 93% 13%, 81% 4%, 36% 54%);
+	transform: scale(0);
+	transform-origin: bottom left;
+	transition: 120ms transform ease-in-out;
+}
+
+.filter-checkbox:checked::before {
+	transform: scale(1);
+}
+
+
+/* Tooltip container */
+.tooltip {
+	display: inline-block;
+	cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+	visibility: hidden;
+	text-align: left;
+	padding: 14px 31px 14px 18px;
+	position: absolute;
+	overflow-y: auto;
+	z-index: 9999;
+	right: 0%;
+	opacity: 0;
+	transition: opacity 0.3s;
+	cursor: auto;
+}
+
+.active {
+	display: block;
+}
+
+/* Icon Tooltip Styles */
+.tooltip-filter,
+.tooltip-vul-ref,
+.tooltip-switch-left,
+.compliance--tooltip__active,
+.filesystem--tooltip__active,
+.tooltip-switch {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip-switch .tooltiptext {
+	visibility: hidden;
+	min-width: fit-content;
+	text-align: center;
+	padding: 5px 10px;
+	position: absolute;
+	bottom: 135%;
+	left: 50%;
+	margin-left: -60px;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.tooltip-switch .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+}
+
+.compliance--tooltip__active .tooltiptext {
+	visibility: hidden;
+	width: max-content;
+	text-align: center;
+	padding: 5px 10px;
+	position: absolute;
+	bottom: 135%;
+	left: 0;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.compliance--tooltip__active .tooltiptext::after {
+	content: "";
+	position: absolute;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+}
+
+.file-link:hover {
+	text-decoration: underline;
+}
+
+.tooltip-switch .tooltiptext.left-tooltip::after {
+	left: 60%;
+}
+
+.tooltip-switch .tooltiptext.right-tooltip::after {
+	left: 40%;
+}
+
+.tooltip-switch:hover .tooltiptext,
+.compliance--tooltip__active:hover .tooltiptext,
+.filesystem--tooltip__active:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
+
+.compliance--tooltip__active {
+	margin-top: 5px;
+	margin-right: 8px;
+}
+
+.bx--inline-notification__details {
+	margin: 0;
+	gap: 8px;
+	align-items: center;
+}
+
+.bx--inline-notification__details svg {
+	margin: 0;
+}
+
+.tooltip-visible {
+	visibility: visible;
+	opacity: 1;
+}
+
+.tooltip-filter .tooltiptext,
+.tooltip-vul-ref .tooltiptext {
+	visibility: hidden;
+	min-width: 100px;
+	text-align: center;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.tooltip-vul-ref .tooltiptext {
+	min-width: 124px;
+}
+
+.tooltip-filter .tooltiptext::after,
+.tooltip-vul-ref .tooltiptext::after {
+	content: "";
+	position: absolute;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+}
+
+.tooltip-filter:hover .tooltiptext,
+.tooltip-vul-ref:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
+
+.tooltip-property-info:hover .tooltiptext,
+.info-tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
+
+.tooltip-filter .tooltip-right.tooltiptext {
+	top: 4px;
+	left: 230%;
+	margin-left: -60px;
+}
+
+.tooltip-filter .tooltip-right.tooltiptext::after {
+	top: 32%;
+	left: -4%;
+	transform: rotate(90deg);
+}
+
+.tooltip-vul-ref .tooltip-top.tooltiptext {
+	top: 34px;
+	left: 230%;
+	margin-left: -65px
+}
+
+.tooltip-vul-ref .tooltip-top.tooltiptext::after {
+	top: -9px;
+	left: 18%;
+	transform: rotate(180deg);
+}
+
+.tooltip-vul-ref .tooltiptext.tooltip-top p {
+	font-size: 14px;
+	text-align: start;
+	margin-bottom: 5px;
+	padding: 0 10px;
+}
+
+
+.tooltip-fips .tooltip-top.tooltiptext::after {
+	top: 20px;
+	left: 100%;
+	transform: rotate(130deg);
+}
+
+.fips-col-tooltip .tooltiptext::after {
+	bottom: -4px;
+	left: 93%;
+	transform: rotate(130deg);
+}
+
+.tooltip-fips .tooltiptext {
+	text-align: left;
+	padding: 7px 12px;
+	border-radius: 2px;
+	color: var(--Icon-icon-inverse, #161616);
+	font-family: "IBM Plex Sans Condensed";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	/* 133.333% */
+	letter-spacing: 0.32px;
+}
+
+.tooltip-fips .tooltiptext {
+	top: 3px !important;
+	left: 0px !important;
+	margin-left: -115% !important;
+}
+
+.fips-col-tooltip .tooltiptext,
+.top-col-tooltip .tooltiptext {
+	left: 0px !important;
+	margin-left: -115% !important;
+}
+
+.fips-col-tooltip,
+.top-col-tooltip {
+	display: flex;
+}
+
+.fips-col-tooltip>span.colText,
+.top-col-tooltip>span.colText {
+	margin-left: 8px;
+
+}
+
+.top-col-tooltip>.tooltiptext {
+
+	bottom: 0px !important;
+	top: -19px;
+	overflow: hidden;
+	left: -160%;
+	width: 165px;
+	height: max-content;
+}
+
+.top-col-tooltip .tooltiptext::after {
+	bottom: 36px !important;
+	top: 23px;
+	left: 100% !important;
+	transform: rotate(130deg);
+}
+
+.fips-col-tooltip .tooltiptext,
+.top-col-tooltip .tooltiptext {
+	text-align: left;
+	padding: 8px 16px;
+	border-radius: 2px;
+	overflow: visible;
+	font-family: var(--Fixed-Body-Font-family, "IBM Plex Sans");
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 20px;
+	/* 142.857% */
+	letter-spacing: 0.16px;
+}
+
+.fips-col-tooltip .tooltiptext {
+	bottom: 30px;
+	margin-left: -156px !important;
+	width: 176px;
+}
+
+.filesystem--tooltip__active .tooltiptext {
+	margin-left: 0 !important;
+}
+
+.filesystem--tooltip__active .tooltiptext {
+	visibility: hidden;
+	width: max-content;
+	text-align: center;
+	padding: 5px 10px;
+	position: absolute;
+	bottom: 135%;
+	left: 0;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.filesystem--tooltip__active .tooltiptext::after {
+	content: "";
+	position: absolute;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+}
+
+.tooltip-fips .tooltiptext .compliance--tooltip__active {
+	margin-right: 0px;
+	display: inline-flex;
+	align-items: center;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	letter-spacing: 0.32px;
+}
+
+.tooltip-fips .tooltiptext .compliance--tooltip__active svg {
+	width: 12px;
+	height: 12px;
+	margin-right: 5px;
+}
+
+.tooltip .tooltiptext p {
+	font-family: var(--qs-ibm-font-family);
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 21px;
+	letter-spacing: 0.16px;
+}
+
+/* Show the tooltip text when tooltip is active */
+.tooltip.active .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
+
+.tooltip-close-icon {
+	position: absolute;
+	cursor: pointer;
+	right: 12px;
+	top: 14px;
+}
+
+/* Top Col tooltip  */
+.fips-col-tooltip,
+.top-col-tooltip {
+	display: flex;
+}
+
+.fips-col-tooltip>span.colText,
+.top-col-tooltip>span.colText {
+	margin-left: 8px;
+}
+
+.fips-col-tooltip .tooltiptext::after {
+	bottom: -4px;
+	left: 93%;
+	transform: rotate(130deg);
+}
+
+.filesystem--tooltip__active .tooltiptext::after {
+	bottom: -4px;
+	left: 10px;
+	transform: rotate(130deg);
+}
+
+.top-col-tooltip .tooltiptext {
+
+	bottom: 0px !important;
+	top: -19px;
+	overflow: visible;
+	left: -176%;
+	width: 140px;
+	height: max-content;
+}
+
+.fip-left .tooltiptext {
+	left: -142%;
+}
+
+.top-col-tooltip .tooltiptext::after {
+	top: 20px;
+	left: 100%;
+	transform: rotate(130deg);
+}
+
+.footer-link a {
+	margin-top: 1rem;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	font-family: var(--qs-ibm-font-family);
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 20px;
+	letter-spacing: 0.16px;
+}
+
+.mt-16 {
+	margin-top: 1rem;
+}
+
+.functincall-nav {
+	display: flex;
+	align-items: center;
+	padding: 6px 12px;
+}
+
+.functincall-nav span {
+	display: flex;
+	align-items: center;
+
+}
+
+.countOfassets,
+.bckBtnNav {
+	font-family: var(--qs-ibm-font-family);
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 16px;
+	letter-spacing: 0.16px;
+}
+
+.bckBtnNav {
+	cursor: pointer;
+	background: none;
+	border: none;
+	display: flex;
+}
+
+.functincall-nav svg {
+	cursor: pointer;
+}
+
+.nxtPrvBtn button {
+	background: transparent;
+	border: none;
+	padding: 0px;
+	padding-top: 3px;
+}
+
+.nav-icon {
+	margin-top: 4px;
+}
+
+.nxtPrvBtn {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+}
+
+.breadcrumb-btn {
+	margin-right: 4px;
+}
+
+.prvBtn,
+.mr8 {
+	margin-right: 8px;
+}
+
+.open-qs {
+	transform: rotate(360deg) !important;
+	margin-right: 10px;
+}
+
+.dismiss {
+	animation: 0.5s slide-right;
+	overflow: hidden;
+}
+
+.function-calls-tile {
+	overflow: hidden;
+}
+
+.parameter-block.cart {
+	background: none;
+	border: none;
+	width: 100%;
+}
+
+.parameter-btn {
+	width: 100%;
+}
+
+#languageFilterWrapper {
+	margin-top: -16px;
+}
+
+#languageFilterWrapper .bx--form-item,
+.no-metrics-wrapper .bx--form-item {
+	flex: none;
+}
+
+.no-language-wrapper {
+	padding-top: 0 !important;
+}
+
+#languageFilterWrapper .language-dropdown {
+	width: 150px;
+	margin: 0 1rem;
+	background-color: transparent;
+}
+
+.no-metrics-wrapper .language-dropdown {
+	width: 150px;
+	margin: 0rem;
+	background-color: transparent;
+}
+
+#languageFilterWrapper .language-dropdown #dropdown,
+.no-metrics-wrapper .language-dropdown button  {
+	width: 100%;
+	border-radius: 4px;
+	padding: 5px 14px;
+	border: 1px solid #878D96;
+	background-blend-mode: multiply;
+}
+
+#languageFilterWrapper .bx--tile {
+	padding: 0;
+	display: flex;
+	justify-content: flex-start;
+	align-items: self-end;
+	padding-bottom: 8px;
+}
+
+.no-metrics-wrapper .bx--tile {
+	padding-bottom: 8px;
+}
+
+.bx--dropdown--open .bx--dropdown-item {
+	padding: 10px;
+}
+
+.bx--dropdown--open .bx--dropdown-item::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+}
+
+.asset-name {
+	margin: 0px;
+	padding-left: 16px;
+}
+
+.language-label {
+	padding: 0 1rem;
+	display: flex;
+}
+
+.no-metrics-wrapper .language-label {
+	padding: 0;
+}
+
+.chart-legend {
+	margin-top: 1rem;
+}
+
+#languageResultsWrapper.data-loaded {
+	min-height: 230px;
+}
+
+.function-calls-tile ul {
+	margin-left: 8px;
+	padding-left: 7px;
+}
+
+.vul-reference-link {
+	border-radius: 50%;
+	padding: 4px;
+	margin-right: 6px;
+}
+
+@keyframes slide-right {
+	0% {
+		margin-left: -100%;
+	}
+
+	100% {
+		margin-left: 0%;
+	}
+}
+
+@keyframes slide-left {
+	from {
+		margin-left: 100%;
+	}
+
+	to {
+		margin-left: 0%;
+	}
+}
+
+.custom-tooltip {
+	padding: 0px;
+	border-radius: 4px;
+	min-width: 160px;
+	min-height: 153px;
+}
+
+.empty-state .title-empty p {
+	font-family: "IBM Plex Sans";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	/* 133.333% */
+	letter-spacing: 0.32px;
+}
+
+.empty-state .title-empty h3 {
+	font-family: "IBM Plex Sans";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 22px;
+	/* 137.5% */
+}
+
+#matricesWrapper, .no-metrics-wrapper {
+	margin-bottom: 5px;
+	border-radius: 4px;
+}
+
+.custom-tooltip .bx--tooltip__footer {
+	margin-top: 0px;
+}
+
+.custom-tooltip .tooltip-label {
+	padding: 1rem;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 24px;
+}
+
+.custom-tooltip .file-type-list li {
+	padding: 7px 16px;
+	cursor: pointer;
+	width: 100%;
+}
+
+.custom-tooltip .file-type-list li:hover {
+	padding-left: 14px;
+}
+
+.custom-tooltip .file-type-list {
+	width: 100%;
+}
+
+.algo-legend {
+	display: flex;
+	width: 100%;
+	margin-top: 1rem;
+}
+
+#vulLegend {
+	margin-top: 10px;
+}
+
+.vul-legend {
+	margin-top: 1rem;
+}
+
+.algo-legend>div p {
+	width: 100px;
+	display: inline-block;
+}
+
+.legend-title {
+	font-family: var(--qs-ibm-font-family);
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px;
+	/* 128.571% */
+	letter-spacing: 0.16px;
+	margin-bottom: 12px;
+}
+
+.filter-accordion__heading>p {
+	width: 83%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.filter-accordion__heading>span.filter-count-temp {
+	width: 7%;
+	display: inline-flex;
+	align-items: center;
+}
+
+.filter-accordion__heading>svg.filter_arrow_icon {
+	width: 10%;
+}
+
+.no-vulnerability-wrapper {
+	padding: 1rem;
+	font-size: 14px;
+}
+
+.highlight-doc {
+	margin: 0.1rem 0;
+}
+
+.nested {
+	display: none;
+}
+
+.arrow-disc {
+	-ms-transform: rotate(-90deg);
+	/* IE 9 */
+	-webkit-transform: rotate(-90deg);
+	/* Safari */
+	transform: rotate(-90deg);
+}
+
+.caret-down .arrow-disc {
+	-ms-transform: rotate(0deg);
+	/* IE 9 */
+	-webkit-transform: rotate(0deg);
+	/* Safari */
+	transform: rotate(0deg);
+}
+
+.inner-function-child {
+	padding-left: 10px;
+}
+
+.asset-accordion-title {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.asset-vul-count {
+	width: 370px;
+	display: flex;
+	align-items: center;
+}
+
+.bx--accordion__header span.bx--accordion__title.asset-vul-count {
+	width: 400px;
+}
+
+.legend-wrapper {
+	max-height: 160px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+li.legend-item span {
+	word-break: break-all;
+}
+
+.function-calls-tile .bx--tile-content.header-tile-content {
+	margin-top: 1rem;
+}
+
+.symbol-list li {
+	display: flex;
+}
+
+.right-icons-function-calls {
+	display: flex;
+}
+
+.symbol-list li .symbol-text {
+	margin-left: 8px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 21px;
+	letter-spacing: 0.16px;
+}
+
+#dropdown:focus-visible,
+.filter-icon-button.export-icon:focus-within,
+#searchInput:focus-visible,
+.bx--tag__close-icon.search-clear-icon:focus-within,
+.filter-checkbox:focus-within,
+.clear-filter.link-text:focus-visible,
+.bx--accordion__heading.filter-accordion__heading:focus-visible,
+.tooltip.language-tip:focus-visible,
+.bx--dropdown-item:focus-visible,
+.filter-icon-button:focus-visible,
+.tooltip.info-tooltip:focus-visible,
+svg.tooltip-close-icon:focus,
+.tab-list .bx--tabs__nav-item:focus-visible,
+button.caret:focus-visible,
+.artefact-title.clickable:focus-visible,
+.algorithms-chart:focus-visible,
+.vulnerabilities-chart:focus-visible,
+.standard-chart:focus-visible,
+.file-type-list li:focus-visible,
+.footer-link a:focus-visible,
+a.link-text:focus-visible,
+button.bckBtnNav:focus-visible,
+.bx--tree-btn.parameter-btn.parameter-block.cart:focus-visible,
+.parameter-btn:focus-visible {
+	outline: 2px solid var(--qs-accent-blue-color);
+	outline-offset: -2px;
+}
+
+.bx--tooltip__trigger.filter-icon-button.export-icon:focus-visible {
+	outline: 2px solid var(--qs-accent-blue-color) !important;
+	outline-offset: -2px !important;
+}
+
+button.bx--accordion__heading.filter-accordion__heading {
+	padding: 0px 16px;
+}
+
+/***********/
+
+.language-label .bx--label {
+	display: flex;
+	align-items: center;
+}
+
+
+.info-tooltip .language-tooltip {
+	width: 400px;
+	left: -75px;
+	max-height: fit-content;
+}
+
+.language-tip {
+	margin-bottom: 0px;
+}
+
+.language-tooltip p {
+	margin-bottom: 16px;
+}
+
+.dropdown-list li.dropdown-item {
+	padding: 7px 16px;
+	cursor: context-menu;
+}
+
+.fn-action-icons .tooltip.info-tooltip {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.crypto-header-1 .bx--tile-content {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.custom-accordion__heading.function-calls svg {
+	z-index: 1;
+}
+
+.bx--tile.function-calls-tile .bx--tile-content .custom-accordion.content-slide {
+	overflow: auto;
+	padding-bottom: 15px;
+	margin-right: 10px;
+	scrollbar-width: thin;
+}
+
+.no-caret {
+	margin: 0 5px;
+	height: 5px;
+	width: 5px;
+	background-color: #555;
+}
+
+.function-call-caret {
+	display: flex;
+	gap: 4px;
+}
+
+.container-main {
+	margin-bottom: 16px;
+	display: grid;
+	grid-template-columns: repeat(11, 1fr);
+	gap: 5px;
+}
+
+.bx--accordion__heading:focus::before {
+	border: none;
+}
+
+.chart-tooltip {
+	position: absolute;
+	max-width: 240px;
+	word-wrap: break-word;
+	color: #FFFFFF;
+	background: rgba(0, 0, 0, 0.7);
+	border-radius: 3px;
+	opacity: 1;
+	pointer-events: none;
+	transform: translate(-50%, 0);
+	transition: 'all .1s ease';
+}
+
+.chart-tooltip p {
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 22px;
+}
+
+.variable-trace-wrapper {
+	min-height: 100px;
+	width: 100%;
+}
+
+.symbols-list-heading {
+	font-style: italic !important;
+	margin: 1rem 0px;
+}
+
+.symbol-list {
+	margin-left: 0px !important;
+	padding-left: 0px !important;
+}
+
+.symbol-list li svg,
+.symbol-list li i {
+	margin-top: 2.5px;
+}
+
+.function-call-block {
+	min-height: 200px;
+}
+
+#donutChartInstances,
+#donutChartLibraries,
+#donutChartAlgorithm,
+#donutChartVulnerability {
+	z-index: 999;
+}
+
+.legend-list.fips-list li {
+	display: inline-block;
+	width: 50%;
+}
+
+svg.unknown-icon {
+	fill: var(--Transparent-Transparent, var(--qs-dark-text-description-color)) !important;
+	background-blend-mode: multiply;
+	overflow: inherit;
+}
+
+.legend-list.fips-list li .labelBox {
+	margin-right: 6px;
+}
+
+.legend-title-header {
+	margin-bottom: 16px;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 16px;
+	/* 100% */
+	letter-spacing: 0.16px;
+}
+
+.tooltipdjs {
+	position: absolute;
+	text-align: center;
+	width: auto;
+	height: auto;
+	padding: 10px;
+	font: 12px sans-serif;
+	background: lightsteelblue;
+	border: 0px;
+	border-radius: 8px;
+	pointer-events: none;
+}
+
+#searchArticfects {
+	height: 32px;
+
+}
+
+#searchArticfects:focus {
+	outline: none;
+}
+
+#artifectlist {
+	position: relative;
+}
+
+#artifectlist .search-clear-icon {
+	position: absolute;
+	right: 12px;
+	top: 14px;
+	height: 14px;
+	width: 14px;
+	transform: translateY(-50%);
+}
+
+td.bx--table-body-cell.tooltip-cell {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: inherit;
+}
+
+.tooltip-cell .info-tooltip {
+	margin-bottom: 0;
+}
+
+.header-tile-content .tooltip {
+	padding-right: 1rem;
+}
+
+.bx--tile.properties-tile .bx--table-body-cell.tooltip-cell .tooltiptext {
+	width: 35%;
+	left: 0;
+}
+
+.bx--content-switcher {
+	width: fit-content;
+}
+
+.bx--content-switcher-btn {
+	padding: 0;
+	border-color: #878D96 !important;
+	overflow: visible !important;
+}
+
+.bx--content-switcher__panel {
+	padding: 20px;
+	border: 1px solid #ccc;
+	margin-top: 20px;
+}
+
+.bx--content-switcher-btn::before {
+	width: 0;
+}
+
+.bx--content-switcher-btn__label {
+	background: transparent;
+	border: none;
+	padding: 12px;
+	cursor: pointer;
+}
+
+.bx--content-switcher:not(.disable-flat-switch) .bx--content-switcher-btn:hover .bx--content-switcher-btn__label {
+	color: #161616;
+}
+
+.bx--content-switcher-btn .bx--content-switcher-btn__label[aria-selected="true"] {
+	background-color: #e5e5e5;
+	color: #161616;
+	height: 100%;
+}
+
+.bx--content-switcher-btn:first-child .bx--content-switcher-btn__label[aria-selected="true"] {
+	border-bottom-left-radius: .25rem;
+	border-top-left-radius: .25rem;
+}
+
+.bx--content-switcher-btn:last-child .bx--content-switcher-btn__label[aria-selected="true"] {
+	border-bottom-right-radius: .25rem;
+	border-top-right-radius: .25rem;
+}
+
+.hide-flat-switch {
+	display: none;
+}
+
+.disable-flat-switch {
+	display: none;
+}
+
+.export-btn .bx--tooltip.bx--content__visible {
+	top: 22px;
+}
+
+.bx--content__visible {
+	display: block;
+}
+
+.word-wrap {
+	word-break: break-all;
+	white-space: normal;
+}
+
+.disable-flat-switch .bx--content-switcher-btn .bx--content-switcher-btn__label {
+	cursor: default;
+	opacity: 0.3;
+}
+
+.disable-flat-switch .bx--content-switcher-btn {
+	border-color: #878d9675 !important;
+}
+
+.disable-flat-switch .bx--content-switcher-btn:hover {
+	background-color: transparent !important;
+}
+
+.bx--wrapper__utilities {
+	display: flex;
+	align-items: self-end;
+	justify-content: space-between;
+	width: -webkit-fill-available;
+}
+
+.bx--wrapper__utilities .bx--inline-notification {
+	margin: 0;
+}
+
+.bx--compliance-notification .bx--compliance-notification__icon {
+	display: none;
+}
+
+.compliance--notification__wrapper.metrics-wrapper.vulnerable .bx--compliance-notification .bx--compliance-notification__icon-warning,
+.compliance--notification__wrapper.metrics-wrapper.secure .bx--compliance-notification .bx--compliance-notification__icon-success {
+	display: block;
+}
+
+body.vscode-dark .bx--wrapper__utilities .bx--inline-notification.bx--inline-notification--warning {
+	background: rgb(112, 91, 26);
+	color: var(--primary-background-color, #161616);
+}
+
+body.vscode-dark .legend-title-header {
+	color: var(--qs-dark-text-color);
+}
+
+span.asset--row__compliance-status {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	width: 400px;
+	font-size: .875rem;
+	font-weight: 400;
+	line-height: 1.42857;
+	letter-spacing: .16px;
+	z-index: 1;
+	text-align: left;
+}
+
+.vulnerabilities-desc .link-text {
+	display: inline-block;
+	text-decoration: none;
+	margin-right: 8px;
+	margin-bottom: 16px;
+}
+
+.vulnerabilities-desc a.link-text svg {
+	vertical-align: middle;
+}
+
+.asset--header__title {
+	font-size: 14px !important;
+	font-style: normal;
+	font-weight: 600 !important;
+	line-height: 18px !important;
+	width: calc(100% + 90px);
+}
+
+.bx--result-notification__title {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+	letter-spacing: 0.16px;
+}
+
+div#matricesWrapper.vulnerable.compliance--notification__wrapper {
+	border-radius: 4px;
+}
+
+div#matricesWrapper.secure.compliance--notification__wrapper {
+	border-left: 4px solid #42BE65;
+	border-radius: 4px;
+}
+
+.bx--inline-notification__details {
+	display: none;
+}
+
+.compliance--notification__wrapper .bx--inline-notification__details {
+	display: flex;
+}
+
+.status-agile {
+	display: flex;
+}
+
+.status-agile svg {
+	margin-right: 8px;
+}
+
+.title-empty {
+	margin-top: 12px;
+	margin-bottom: 32px;
+}
+
+.empty-state svg {
+	margin-top: 16px;
+}
+
+.donut-section:has(.title-empty) {
+	justify-content: flex-start;
+}
+
+/* ---- Theme based styles ---- */
+
+/* ---- Light Theme ---- */
+
+body.vscode-light .empty-state .title-empty h3 {
+	color: var(--text-color);
+}
+
+body.vscode-light .empty-state .title-empty p {
+	color: var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-light .custom-tooltip {
+	background: var(--qs-white-color);
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.30);
+}
+
+body.vscode-light .symbol-list li .symbol-text {
+	color: var(--primary-background-light-color);
+}
+
+body.vscode-light .custom-tooltip .bx--tooltip__caret {
+	border-bottom: 0.42969rem solid var(--qs-white-color);
+}
+
+body.vscode-light .custom-tooltip .tooltip-label {
+	color: var(--primary-background-light-color);
+}
+
+body.vscode-light .custom-tooltip .file-type-list li {
+	color: var(--qs-heading-compact-color);
+}
+
+body.vscode-light .custom-tooltip .file-type-list li:hover {
+	border-left: 3px solid var(--qs-border-left-color);
+	background: var(--qs-light-title-bar);
+}
+
+body.vscode-light .crypto-header-wrapper {
+	background: var(--primary-background-color);
+}
+
+body.vscode-light,
+body.vscode-light .bx--text-input {
+	color: var(--primary-background-light-color);
+}
+
+body.vscode-light .tooltip .tooltiptext {
+	border: 1px solid var(--qs-light-title-bar);
+	background: var(--qs-white-color);
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+body.vscode-light .breadcrumb-btn,
+body.vscode-light .dir-button {
+	fill: var(--qs-heading-compact-color);
+}
+
+body.vscode-light .filter-accordion__heading,
+body.vscode-light .horizontal-radio-group label.bx--radio-button__label,
+body.vscode-light .search-input,
+body.vscode-light .tooltip .tooltiptext p,
+body.vscode-light .tooltip-close-icon,
+body.vscode-light .info-icon {
+	color: var(--qs-heading-compact-color)
+}
+
+body.vscode-light .filter-checkbox {
+	border: 1px solid var(--qs-heading-compact-color);
+	color: var(--qs-heading-compact-color);
+	background-color: var(--qs-transparent-color);
+}
+
+body.vscode-light .filter-checkbox:checked {
+	background: var(--qs-heading-compact-color) !important;
+}
+
+body.vscode-light .filter-checkbox::before {
+	background-color: var(--primary-background-color);
+}
+
+body.vscode-light .filtersTitle,
+body.vscode-light .filter-tag {
+	color: var(--primary-background-light-color)
+}
+
+body.vscode-light .filter-tag {
+	background-color: #BE95FF !important
+}
+
+body.vscode-light .filter-radio {
+	border: 1px solid var(--qs-heading-compact-color)
+}
+
+body.vscode-light .filter-radio:checked:before {
+	background: var(--qs-heading-compact-color);
+}
+
+body.vscode-light .bx--tree-btn {
+	background-color: var(--qs-transparent-color);
+}
+
+body.vscode-light button.function-tree-btn:focus,
+body.vscode-light button.function-tree-btn::selection {
+	background-color: var(--qs-light-title-bar);
+}
+
+body.vscode-light .no-asset-wrpr,
+body.vscode-light .no-vulnerability-wrapper {
+	border-top: 1px solid var(--qs-light-title-bar);
+	border-bottom: 1px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .bx--text-input,
+body.vscode-light .parameter-tracing-wrpr .bx--tree .bx--tree-node .bx--tree-btn:hover,
+body.vscode-light .function-calls-tile .bx--tree .bx--tree-node .bx--tree-btn:hover {
+	background-color: var(--qs-light-title-bar);
+}
+
+body.vscode-light .properties-tile .bx--data-table td,
+body.vscode-light .properties-tile .bx--data-table tbody th {
+	border-top: 1px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .left-partition {
+	border-left: 1px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .bg-header-accordion {
+	background-color: var(--qs-light-title-bar);
+	border-left: 3px solid var(--qs-border-left-color);
+}
+
+.custom-accordion__heading svg.bx--icon {
+	z-index: 0;
+}
+
+body.vscode-light .function-calls-tile .bg-header-accordion,
+body.vscode-light .vulnerabilities-tile .bg-header-accordion {
+	border-left: 3px solid var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-light .grid-item,
+body.vscode-light .filter-wrapper,
+body.vscode-light #filterTags,
+body.vscode-light .custom-accordion__item,
+body.vscode-light .donut-chart-container .vulnerabilities-chart,
+body.vscode-light .donut-chart-container .algorithms-chart {
+	background-color: var(--primary-background-color);
+}
+
+body.vscode-light .donut-chart-container .vulnerabilities-chart,
+body.vscode-light .donut-chart-container .algorithms-chart {
+	background-color: var(--primary-background-color);
+	color: var(--qs-heading-compact-color)
+}
+
+body.vscode-light .crypto-filters:hover,
+body.vscode-light .crypto-filters:focus {
+	background-color: var(--qs-light-title-bar);
+}
+
+body.vscode-light .crypto-filters {
+	background: var(--primary-background-color);
+	border-bottom: 0.8px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .bx--table-body-cell {
+	border-bottom: 1px solid var(--qs-light-title-bar);
+	color: var(--primary-background-light-color);
+}
+
+body.vscode-light .function-calls-desc,
+body.vscode-light .vulnerabilities-desc {
+	background-color: var(--primary-background-color);
+	border-left: 3px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light button.function-tree-btn:focus,
+body.vscode-light button.function-tree-btn::selection,
+body.vscode-light .search-input {
+	background-color: var(--qs-light-title-bar);
+}
+
+body.vscode-light .filter-accordion__item,
+body.vscode-light .no-asset-wrpr {
+	border-top: 1px solid var(--qs-light-title-bar);
+	border-bottom: 1px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .bx--dropdown--open .bx--dropdown-item::before {
+	border-top: 1px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .search-input {
+	border-bottom: 1px solid var(--qs-heading-compact-color);
+}
+
+body.vscode-light .bx--table-head-cell {
+	color: var(--qs-table-heading-color);
+}
+
+body.vscode-light span.fn-prefix {
+	color: var(--qs-table-heading-color);
+}
+
+body.vscode-light .tooltip-filter .tooltiptext,
+body.vscode-light .tooltip-vul-ref .tooltiptext,
+body.vscode-light .compliance--tooltip__active .tooltiptext,
+body.vscode-light .filesystem--tooltip__active .tooltiptext,
+body.vscode-light .tooltip-switch .tooltiptext {
+	background-color: var(--qs-light-title-bar);
+}
+
+.tooltip-fips .tooltiptext {
+	background-color: var(--qs-dark-background);
+}
+
+.fips-col-tooltip .tooltiptext {
+	overflow-wrap: break-word;
+}
+
+body.vscode-light .fips-col-tooltip>.tooltiptext,
+body.vscode-light .top-col-tooltip.compliance--tooltip__active>.tooltiptext,
+body.vscode-light .filesystem--tooltip__active>.tooltiptext,
+body.vscode-light .tooltip-fips>.tooltiptext {
+	background-color: var(--qs-white-color) !important;
+	color: var(--text-color);
+}
+
+body.vscode-light .tooltip-vul-ref.tooltip-fips .tooltiptext {
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
+	z-index: 2;
+}
+
+body.vscode-light .tooltip-filter .tooltiptext::after,
+body.vscode-light .tooltip-vul-ref .tooltiptext::after,
+body.vscode-light .tooltip-switch .tooltiptext::after {
+	border-color: var(--qs-light-title-bar) transparent transparent transparent;
+}
+
+body.vscode-light .compliance--tooltip__active .tooltiptext::after,
+body.vscode-light .filesystem--tooltip__active .tooltiptext::after,
+body.vscode-light .tooltip-vul-ref.tooltip-fips .tooltiptext::after {
+	border-color: var(--qs-white-color) var(--qs-white-color) var(--qs-white-color) var(--qs-white-color);
+}
+
+body.vscode-light .fips-col-tooltip .tooltiptext,
+body.vscode-light .tooltip-fips .tooltiptext,
+body.vscode-light .top-col-tooltip .tooltiptext {
+	border-color: none;
+}
+
+
+body.vscode-light .open-accordian-heading {
+	background-color: var(--qs-light-title-bar);
+	border-left: 3px solid var(--qs-table-heading-color);
+}
+
+body.vscode-light .crypt-header-stats,
+body.vscode-light .bx--result-notification__title {
+	color: var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-light .highlight-doc {
+	background: var(--qs-light-title-bar);
+	border-left: 3px solid var(--qs-table-heading-color);
+}
+
+body.vscode-light .highlight-item {
+	background: var(--qs-light-title-bar);
+	border-left: 3px solid var(--qs-border-left-color);
+}
+
+body.vscode-light .info-label {
+	fill: var(--qs-heading-compact-color);
+}
+
+body.vscode-light .no-data-inner-circle {
+	fill: var(--lightContrast-bg-color);
+}
+
+body.vscode-light .no-data-text {
+	fill: var(----lightContrast-input-placeholder-color);
+}
+
+.vscode-light .dropdown-list li.dropdown-item {
+	color: var(--qs-heading-compact-color)
+}
+
+.vscode-light .function-calls-tile ul.nested.active {
+	border-left: 3px solid var(--qs-light-title-bar);
+}
+
+.vscode-light .empty-state .empty-state-dark {
+	display: none;
+}
+
+/* ---- Dark Theme ---- */
+body.vscode-dark .symbol-list li .symbol-text {
+	color: var(--qs-white-color);
+}
+
+body.vscode-dark .bx--content-switcher-btn__label {
+	color: #fff;
+}
+
+body.vscode-dark .tooltip .tooltiptext {
+	border: 1px solid var(--qs-dark-highlight-color);
+	background-color: var(--qs-dark-background);
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+body.vscode-dark .custom-tooltip {
+	background: var(--qs-dark-background);
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.30);
+}
+
+body.vscode-dark .custom-tooltip .bx--tooltip__caret {
+	border-bottom: 0.42969rem solid var(--qs-dark-background);
+}
+
+body.vscode-dark .custom-tooltip .tooltip-label {
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .custom-tooltip .file-type-list li:hover {
+	border-left: 3px solid var(--qs-button-background-color);
+	background: var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .function-calls-tile ul.nested.active {
+	border-left: 3px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .custom-tooltip .file-type-list li {
+	color: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .breadcrumb-btn {
+	fill: var(--qs-nav-back-button-color);
+}
+
+body.vscode-dark .dir-button {
+	fill: var(--primary-background-color);
+}
+
+body.vscode-dark .countOfassets {
+	color: var(--qs-nav-count-color);
+}
+
+body.vscode-dark .dropdown-list .dropdown-item {
+	color: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .bckBtnNav {
+	color: var(--qs-white-color);
+}
+
+body.vscode-dark .open-accordian-heading {
+	background-color: var(--qs-dark-highlight-color);
+	border-left: 3px solid var(--qs-table-heading-color);
+}
+
+body.vscode-dark .tooltip .tooltiptext p,
+body.vscode-dark .info-icon,
+body.vscode-dark .tooltip-close-icon,
+body.vscode-dark .legend-title,
+body.vscode-dark .custom-tooltip .file-type-list li {
+	color: var(--qs-dark-text-description-color)
+}
+
+body.vscode-dark,
+body.vscode-dark .bx--tree-btn {
+	background-color: var(--qs-transparent-color);
+}
+
+body.vscode-dark .legend-list span {
+	color: var(--qs-dark-text-highlight-color)
+}
+
+body.vscode-dark .filter-checkbox {
+	border: 1px solid var(--qs-dark-text-description-color);
+	color: var(--qs-dark-text-description-color);
+	background-color: var(--qs-transparent-color);
+}
+
+body.vscode-dark .filter-checkbox:checked {
+	background: var(--qs-dark-text-description-color) !important;
+}
+
+body.vscode-dark .filter-checkbox::before {
+	background-color: var(--qs-dark-background-color);
+}
+
+body.vscode-dark .filter-radio:checked:before {
+	background: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .no-asset-wrpr,
+body.vscode-dark .no-vulnerability-wrapper,
+body.vscode-dark .custom-accordion__item,
+body.vscode-dark .filter-accordion__item,
+body.vscode-dark .properties-tile .bx--data-table td,
+body.vscode-dark .properties-tile .bx--data-table tbody th {
+	border-top: 1px solid var(--qs-dark-highlight-color);
+	border-bottom: 1px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .bx--dropdown--open .bx--dropdown-item::before {
+	border-top: 1px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .function-calls-tile .custom-accordion__item {
+	border: 0;
+}
+
+body.vscode-dark .crypto-filters {
+	background: var(--qs-dark-background-color);
+	border-bottom: 0.8px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .function-calls-desc,
+body.vscode-dark .vulnerabilities-desc {
+	border-left: 3px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .left-partition {
+	border-left: 1px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .function-calls-tile .bg-header-accordion,
+body.vscode-dark .vulnerabilities-tile .bg-header-accordion {
+	border-left: 3px solid var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-dark,
+body.vscode-dark .bx--text-input,
+body.vscode-dark .bx--accordion__heading,
+body.vscode-dark .bx--tree-btn,
+body.vscode-dark .bx--inline-loading__text {
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .grid-item,
+body.vscode-dark .custom-accordion__item,
+body.vscode-dark .function-calls-desc,
+body.vscode-dark .vulnerabilities-desc,
+body.vscode-dark .metrics-wrapper .bx--tile,
+body.vscode-dark .no-metrics-wrapper .bx--tile,
+body.vscode-dark .bx--tile.parameter-tracing-tile,
+body.vscode-dark .bx--tile.properties-tile,
+body.vscode-dark #scanInfoWrapper,
+body.vscode-dark .bx--tile.function-calls-tile,
+body.vscode-dark .bx--tile.vulnerabilities-tile,
+body.vscode-dark .bx--tile.function-calls-tile .bx--tree .bx--tree-node,
+body.vscode-dark .bx--tile.parameter-tracing-tile .bx--tree .bx--tree-node,
+body.vscode-dark .bx--data-table td,
+body.vscode-dark .bx--data-table tr.filter-row th,
+body.vscode-dark .bx--data-table tbody th,
+body.vscode-dark #filterTags,
+body.vscode-dark .filter-wrapper {
+	background-color: var(--qs-dark-background-color);
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .donut-chart-container .vulnerabilities-chart,
+body.vscode-dark .donut-chart-container .algorithms-chart {
+	background-color: var(--qs-dark-background-color);
+	color: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .bx--text-input,
+body.vscode-dark .bg-header-accordion,
+body.vscode-dark .bx--table-body-cell,
+body.vscode-dark .custom-accordion__heading:hover::before,
+body.vscode-dark .function-calls-tile .bx--tree .bx--tree-node .bx--tree-btn:hover,
+body.vscode-dark .parameter-tracing-wrpr .bx--tree .bx--tree-node .bx--tree-btn:hover,
+body.vscode-dark button.function-tree-btn:focus,
+body.vscode-dark button.function-tree-btn::selection,
+body.vscode-dark .crypto-filters:hover,
+body.vscode-dark .crypto-filters:focus,
+body.vscode-dark .bx--data-table tbody tr:hover,
+body.vscode-dark .bx--data-table tbody tr:hover td,
+body.vscode-dark .bx--data-table tbody tr:hover th,
+body.vscode-dark .search-input {
+	background-color: var(--qs-dark-highlight-color);
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .filter-tag {
+	color: var(--qs-dark-text-color);
+	background-color: var(--darkContrast-purple-color);
+}
+
+body.vscode-dark .bg-header-accordion {
+	border-left: 3px solid var(--qs-border-left-color);
+}
+
+body.vscode-dark .bx--accordion__heading.custom-accordion__heading.function-calls,
+body.vscode-dark .function-calls.bg-header-accordion,
+body.vscode-dark .function-calls-desc,
+body.vscode-dark .bx--accordion__heading.custom-accordion__heading.vulnerabilities,
+body.vscode-dark .vulnerabilities.bg-header-accordion,
+body.vscode-dark .vulnerabilities-desc,
+body.vscode-dark .vul-text,
+body.vscode-dark .bx--label,
+body.vscode-dark .filter-accordion__heading,
+body.vscode-dark .horizontal-radio-group label.bx--radio-button__label {
+	color: var(--qs-dark-text-description-color) !important;
+}
+
+body.vscode-dark .bx--data-table tbody th,
+body.vscode-dark .bx--table-head-cell,
+body.vscode-dark .vulnerability-status-header {
+	color: var(--qs-dark-text-highlight-color) !important;
+}
+
+
+body.vscode-dark span.fn-prefix {
+	color: var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-dark .filtersTitle {
+	color: var(--primary-background-color);
+}
+
+body.vscode-dark ::placeholder {
+	color: var(--qs-placeholder-color);
+}
+
+body.vscode-dark .search-input {
+	border-bottom: 1px solid var(--qs-placeholder-color);
+}
+
+body.vscode-dark .filter-radio {
+	border: 1px solid var(--qs-dark-text-description-color)
+}
+
+body.vscode-dark .tag-wrapper .filter-icon-button svg,
+body.vscode-dark .chart-collapse-icon .codicon {
+	color: var(--qs-white-color);
+}
+
+body.vscode-dark .bx--tag__close-icon-svg {
+	fill: var(--qs-dark-text-color) !important;
+}
+
+body.vscode-dark .tooltip-filter .tooltiptext,
+body.vscode-dark .tooltip-vul-ref .tooltiptext,
+body.vscode-dark .compliance--tooltip__active .tooltiptext,
+body.vscode-dark .tooltip-switch .tooltiptext {
+	background-color: var(--qs-dark-highlight-color);
+	/* color: var(--qs-white-color); */
+}
+
+body.vscode-dark .fips-col-tooltip>.tooltiptext,
+body.vscode-dark .top-col-tooltip.compliance--tooltip__active>.tooltiptext,
+body.vscode-dark .top-col-tooltip.filesystem--tooltip__active>.tooltiptext,
+body.vscode-dark .tooltip-fips>.tooltiptext {
+	background-color: var(--qs-white-color) !important;
+	color: var(--text-color);
+}
+
+body.vscode-dark .empty-state .title-empty h3 {
+	color: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .empty-state .title-empty p {
+	color: var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-dark .tooltip-filter .tooltiptext::after,
+body.vscode-dark .tooltip-vul-ref .tooltiptext::after,
+body.vscode-dark .compliance--tooltip__active .tooltiptext::after,
+body.vscode-dark .filesystem--tooltip__active .tooltiptext::after,
+body.vscode-dark .tooltip-switch .tooltiptext::after {
+	border-color: var(--qs-dark-highlight-color) transparent transparent transparent;
+}
+
+body.vscode-dark .fips-col-tooltip .tooltiptext:after,
+body.vscode-dark .top-col-tooltip .tooltiptext::after,
+body.vscode-dark .tooltip-fips .tooltiptext:after {
+	border-color: var(--qs-white-color) !important;
+}
+
+body.vscode-dark .crypt-header-stats {
+	color: var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-dark .bx--result-notification__title {
+	color: var(--secondary-background-color);
+}
+
+body.vscode-dark .highlight-doc {
+	background: var(--qs-dark-highlight-color);
+	border-left: 3px solid var(--qs-table-heading-color);
+}
+
+body.vscode-dark .highlight-item {
+	background: var(--qs-dark-highlight-color);
+	border-left: 3px solid var(--qs-border-left-color);
+}
+
+body.vscode-dark .info-label {
+	fill: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .vul-length {
+	color: var(--qs-vul-lenght-color);
+}
+
+body.vscode-dark .vul-text {
+	color: var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-dark .no-data-inner-circle {
+	fill: var(--qs-dark-background-color);
+}
+
+body.vscode-dark .no-data-text {
+	fill: var(--qs-dark-text-highlight-color);
+}
+
+.vscode-dark .empty-state .empty-state-light {
+	display: none;
+}
+
+/* Common Theme Styles */
+
+.filter-tag.bx--tag .bx--tag__close-icon:hover {
+	background: var(--qs-transparent-color);
+}
+
+.toogle-butoon svg {
+	vertical-align: middle;
+	cursor: pointer;
+
+}
+
+.left-filter {
+	display: flex;
+	margin-left: auto;
+	align-items: center;
+}
+
+#removeAllAccordian {
+	display: none;
+}
+
+.vul-reference-link.selected {
+	border: 1px solid var(--qs-border-left-color);
+}
+
+/* .tag-wrapper .export-icon svg, */
+.link-text,
+.link-text svg,
+.footer-link a {
+	color: var(--qs-default-blue-color) !important;
+	fill: var(--qs-default-blue-color) !important;
+}
+
+.list-div {
+	display: inline-block;
+	width: 104px;
+	vertical-align: top;
+	margin-bottom: 10px;
+}
+
+#standardGrid {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.filter-container {
+	grid-column: 1/3;
+	grid-row: 1;
+}
+
+.asset-container {
+	grid-column: 1/12;
+	grid-row: 1;
+}
+
+.asset-min-container {
+	grid-column: 3/12;
+	grid-row: 1;
+}
+
+.donut-chart-container {
+	width: 250px;
+	height: auto;
+	grid-column: 12;
+	grid-row: 1;
+}
+
+.analytics-results-section {
+	padding: 0;
+	background: transparent;
+}
+
+.analytics-findings-list th,
+.analytics-findings-list td {
+	text-align: left;
+	padding: 7px 16px;
+	word-break: break-word;
+}
+
+.findings-list thead,
+.analytics-findings-list thead,
+.inventory-table thead {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+.analytics-findings-list {
+	table-layout: fixed;
+	width: 100%;
+}
+
+.analytics-findings-list .fn-width {
+	max-width: 280px;
+	min-width: 280px;
+	width: 280px;
+	word-wrap: break-word;
+}
+
+.analytics-findings-list .lib-width {
+	max-width: 120px;
+	min-width: 120px;
+	width: 120px;
+	word-wrap: break-word;
+}
+
+.analytics-findings-list .line-width {
+	max-width: 110px;
+	min-width: 110px;
+	width: 110px;
+	word-wrap: break-word;
+}
+
+.text-underlign {
+	text-decoration-line: underline;
+}
+
+.text-underlign:hover {
+	background-color: #D02670;
+	text-decoration-line: none;
+}
+
+.w-600 {
+	font-weight: 600;
+}
+
+.vscode-dark .analytics-results-section {
+	border-top: 4px solid var(--qs-dark-highlight-color);
+}
+
+.vscode-light .analytics-results-section {
+	border-top: 4px solid var(--qs-light-title-bar);
+}
+
+.vscode-light .analytics-findings-list th,
+.vscode-light .vscode-dark .inventory-table tr:not(.filter-row) th,
+.vscode-light .bx--accordion__header button.bx--accordion__heading {
+	background: var(--qs-light-title-bar);
+}
+
+.vscode-light .analytics-findings-list tr {
+	border-bottom: 1px solid var(--qs-light-title-bar);
+}
+
+.vscode-light .analytics-findings-list,
+body.vscode-light .bx--data-table tr.filter-row th {
+	background: var(--primary-background-color);
+}
+
+.vscode-dark .analytics-findings-list th,
+.vscode-dark .inventory-table tr:not(.filter-row) th,
+.vscode-dark .bx--accordion__header button.bx--accordion__heading {
+	background: var(--qs-dark-highlight-color);
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .analytics-findings-list {
+	background: var(--qs-dark-background-color);
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .analytics-findings-list tr {
+	border-bottom: 1px solid var(--qs-dark-highlight-color);
+}
+
+/* ---- Dark Theme ---- */
+body.vscode-dark .symbol-list li .symbol-text {
+	color: var(--qs-white-color);
+}
+
+body.vscode-dark .bx--content-switcher-btn__label {
+	color: #fff;
+}
+
+body.vscode-dark .tooltip .tooltiptext {
+	border: 1px solid var(--qs-dark-highlight-color);
+	background-color: var(--qs-dark-background);
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+body.vscode-dark .custom-tooltip {
+	background: var(--qs-dark-background);
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.30);
+}
+
+body.vscode-dark .custom-tooltip .bx--tooltip__caret {
+	border-bottom: 0.42969rem solid var(--qs-dark-background);
+}
+
+body.vscode-dark .custom-tooltip .tooltip-label {
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .custom-tooltip .file-type-list li:hover {
+	border-left: 3px solid var(--qs-button-background-color);
+	background: var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .function-calls-tile ul.nested.active {
+	border-left: 3px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .custom-tooltip .file-type-list li {
+	color: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .breadcrumb-btn {
+	fill: var(--qs-nav-back-button-color);
+}
+
+body.vscode-dark .dir-button {
+	fill: var(--primary-background-color);
+}
+
+body.vscode-dark .countOfassets {
+	color: var(--qs-nav-count-color);
+}
+
+body.vscode-dark .dropdown-list .dropdown-item {
+	color: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .bckBtnNav {
+	color: var(--qs-white-color);
+}
+
+body.vscode-dark .open-accordian-heading {
+	background-color: var(--qs-dark-highlight-color);
+	border-left: 3px solid var(--qs-table-heading-color);
+}
+
+body.vscode-dark .tooltip .tooltiptext p,
+body.vscode-dark .info-icon,
+body.vscode-dark .tooltip-close-icon,
+body.vscode-dark .legend-title,
+body.vscode-dark .custom-tooltip .file-type-list li {
+	color: var(--qs-dark-text-description-color)
+}
+
+body.vscode-dark,
+body.vscode-dark .bx--tree-btn {
+	background-color: var(--qs-transparent-color);
+}
+
+body.vscode-dark .legend-list span {
+	color: var(--qs-dark-text-highlight-color)
+}
+
+body.vscode-dark .filter-checkbox {
+	border: 1px solid var(--qs-dark-text-description-color);
+	color: var(--qs-dark-text-description-color);
+	background-color: var(--qs-transparent-color);
+}
+
+body.vscode-dark .filter-checkbox:checked {
+	background: var(--qs-dark-text-description-color) !important;
+}
+
+body.vscode-dark .filter-checkbox::before {
+	background-color: var(--qs-dark-background-color);
+}
+
+body.vscode-dark .filter-radio:checked:before {
+	background: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .no-asset-wrapper,
+body.vscode-dark .no-vulnerability-wrapper,
+body.vscode-dark .custom-accordion__item,
+body.vscode-dark .filter-accordion__item,
+body.vscode-dark .properties-tile .bx--data-table td,
+body.vscode-dark .properties-tile .bx--data-table tbody th {
+	border-top: 1px solid var(--qs-dark-highlight-color);
+	border-bottom: 1px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .bx--dropdown--open .bx--dropdown-item::before {
+	border-top: 1px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .function-calls-tile .custom-accordion__item {
+	border: 0;
+}
+
+body.vscode-dark .crypto-filters {
+	background: var(--qs-dark-background-color);
+	border-bottom: 0.8px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .function-calls-desc,
+body.vscode-dark .vulnerabilities-desc {
+	border-left: 3px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .left-partition {
+	border-left: 1px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .function-calls-tile .bg-header-accordion,
+body.vscode-dark .vulnerabilities-tile .bg-header-accordion {
+	border-left: 3px solid var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-dark,
+body.vscode-dark .bx--text-input,
+body.vscode-dark .bx--accordion__heading,
+body.vscode-dark .bx--tree-btn,
+body.vscode-dark .bx--inline-loading__text {
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .bx--tile,
+body.vscode-dark .grid-item,
+body.vscode-dark .custom-accordion__item,
+body.vscode-dark .function-calls-desc,
+body.vscode-dark .vulnerabilities-desc,
+body.vscode-dark .metrics-wrapper .bx--tile,
+body.vscode-dark .no-metrics-wrapper .bx--tile,
+body.vscode-dark .bx--tile.parameter-tracing-tile,
+body.vscode-dark .bx--tile.properties-tile,
+body.vscode-dark #scanInfoWrapper,
+body.vscode-dark .bx--tile.function-calls-tile,
+body.vscode-dark .bx--tile.vulnerabilities-tile,
+body.vscode-dark .bx--tile.function-calls-tile .bx--tree .bx--tree-node,
+body.vscode-dark .bx--tile.parameter-tracing-tile .bx--tree .bx--tree-node,
+body.vscode-dark .bx--data-table td,
+body.vscode-dark .bx--data-table tr.filter-row th,
+body.vscode-dark .bx--data-table tbody th,
+body.vscode-dark #filterTags,
+body.vscode-dark .filter-wrapper {
+	background-color: var(--qs-dark-background-color);
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .donut-chart-container .vulnerabilities-chart,
+body.vscode-dark .donut-chart-container .algorithms-chart {
+	background-color: var(--qs-dark-background-color);
+	color: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .bx--text-input,
+body.vscode-dark .bg-header-accordion,
+body.vscode-dark .bx--table-body-cell,
+body.vscode-dark .custom-accordion__heading:hover::before,
+body.vscode-dark .function-calls-tile .bx--tree .bx--tree-node .bx--tree-btn:hover,
+body.vscode-dark .parameter-tracing-wrapper .bx--tree .bx--tree-node .bx--tree-btn:hover,
+body.vscode-dark button.function-tree-btn:focus,
+body.vscode-dark button.function-tree-btn::selection,
+body.vscode-dark .crypto-filters:hover,
+body.vscode-dark .crypto-filters:focus,
+body.vscode-dark .bx--data-table tbody tr:hover,
+body.vscode-dark .bx--data-table tbody tr:hover td,
+body.vscode-dark .bx--data-table tbody tr:hover th,
+body.vscode-dark .search-input {
+	background-color: var(--qs-dark-highlight-color);
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .bg-header-accordion {
+	border-left: 3px solid var(--qs-border-left-color);
+}
+
+body.vscode-dark .bx--accordion__heading.custom-accordion__heading.function-calls,
+body.vscode-dark .function-calls.bg-header-accordion,
+body.vscode-dark .function-calls-desc,
+body.vscode-dark .bx--accordion__heading.custom-accordion__heading.vulnerabilities,
+body.vscode-dark .vulnerabilities.bg-header-accordion,
+body.vscode-dark .vulnerabilities-desc,
+body.vscode-dark .vul-text,
+body.vscode-dark .bx--label,
+body.vscode-dark .filter-accordion__heading,
+body.vscode-dark .horizontal-radio-group label.bx--radio-button__label {
+	color: var(--qs-dark-text-description-color) !important;
+}
+
+body.vscode-dark .bx--data-table tbody th,
+body.vscode-dark .bx--table-head-cell,
+body.vscode-dark .vulnerabilities-desc .vulnerability-status-header {
+	color: var(--qs-dark-text-highlight-color) !important;
+}
+
+body.vscode-dark span.fn-prefix {
+	color: var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-dark .filtersTitle {
+	color: var(--primary-background-color);
+}
+
+body.vscode-dark ::placeholder {
+	color: var(--qs-placeholder-color);
+}
+
+body.vscode-dark .search-input {
+	border-bottom: 1px solid var(--qs-placeholder-color);
+}
+
+body.vscode-dark .filter-radio {
+	border: 1px solid var(--qs-dark-text-description-color)
+}
+
+body.vscode-dark .tag-wrapper .filter-icon-button svg,
+body.vscode-dark .chart-collapse-icon .codicon {
+	color: var(--qs-white-color);
+}
+
+body.vscode-dark .tooltip-filter .tooltiptext,
+body.vscode-dark .tooltip-vul-ref .tooltiptext,
+body.vscode-dark .compliance--tooltip__active .tooltiptext,
+body.vscode-dark .tooltip-switch .tooltiptext {
+	background-color: var(--qs-dark-highlight-color);
+	/* color: var(--qs-white-color); */
+}
+
+body.vscode-dark .tooltip-filter .tooltiptext::after,
+body.vscode-dark .tooltip-vul-ref .tooltiptext::after,
+body.vscode-dark .compliance--tooltip__active .tooltiptext::after,
+body.vscode-dark .tooltip-switch .tooltiptext::after {
+	border-color: var(--qs-dark-highlight-color) transparent transparent transparent;
+}
+
+body.vscode-dark .crypt-header-stats {
+	color: var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-dark .highlight-doc {
+	background: var(--qs-dark-highlight-color);
+	border-left: 3px solid var(--qs-table-heading-color);
+}
+
+body.vscode-dark .highlight-item {
+	background: var(--qs-dark-highlight-color);
+	border-left: 3px solid var(--qs-border-left-color);
+}
+
+body.vscode-dark .info-label {
+	fill: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .vul-length {
+	color: var(--qs-vul-lenght-color);
+}
+
+body.vscode-dark .vul-text {
+	color: var(--qs-dark-text-highlight-color);
+}
+
+
+.vscode-dark .analytics-results-section {
+	border-top: 4px solid var(--qs-dark-highlight-color);
+}
+
+.vscode-light .analytics-results-section {
+	border-top: 4px solid var(--qs-light-title-bar);
+}
+
+.vscode-light .analytics-findings-list th,
+.vscode-light .vscode-dark .inventory-table tr:not(.filter-row) th,
+.vscode-light .bx--accordion__header button.bx--accordion__heading {
+	background: var(--qs-light-title-bar);
+}
+
+.vscode-light .analytics-findings-list tr {
+	border-bottom: 1px solid var(--qs-light-title-bar);
+}
+
+.vscode-light .analytics-findings-list,
+body.vscode-light .bx--data-table tr.filter-row th {
+	background: var(--primary-background-color);
+}
+
+.vscode-dark .analytics-findings-list th,
+.vscode-dark .inventory-table tr:not(.filter-row) th,
+.vscode-dark .bx--accordion__header button.bx--accordion__heading {
+	background: var(--qs-dark-highlight-color);
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .analytics-findings-list {
+	background: var(--qs-dark-background-color);
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .analytics-findings-list tr {
+	border-bottom: 1px solid var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .bx--result-notification__title {
+	color: var(--secondary-background-color);
+}
+
+/* ---- Light Theme ---- */
+
+body.vscode-light .custom-tooltip {
+	background: var(--qs-white-color);
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.30);
+}
+
+body.vscode-light .symbol-list li .symbol-text {
+	color: var(--primary-background-light-color);
+}
+
+body.vscode-light .custom-tooltip .bx--tooltip__caret {
+	border-bottom: 0.42969rem solid var(--qs-white-color);
+}
+
+body.vscode-light .custom-tooltip .tooltip-label {
+	color: var(--primary-background-light-color);
+}
+
+body.vscode-light .custom-tooltip .file-type-list li {
+	color: var(--qs-heading-compact-color);
+}
+
+body.vscode-light .custom-tooltip .file-type-list li:hover {
+	border-left: 3px solid var(--qs-border-left-color);
+	background: var(--qs-light-title-bar);
+}
+
+body.vscode-light .crypto-header-wrapper {
+	background: var(--primary-background-color);
+}
+
+body.vscode-light,
+body.vscode-light .bx--text-input {
+	color: var(--primary-background-light-color);
+}
+
+body.vscode-light .tooltip .tooltiptext {
+	border: 1px solid var(--qs-light-title-bar);
+	background: var(--qs-white-color);
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+body.vscode-light .breadcrumb-btn,
+body.vscode-light .dir-button {
+	fill: var(--qs-heading-compact-color);
+}
+
+body.vscode-light .filter-accordion__heading,
+body.vscode-light .horizontal-radio-group label.bx--radio-button__label,
+body.vscode-light .search-input,
+body.vscode-light .tooltip .tooltiptext p,
+body.vscode-light .tooltip-close-icon,
+body.vscode-light .info-icon {
+	color: var(--qs-heading-compact-color)
+}
+
+body.vscode-light .filter-checkbox {
+	border: 1px solid var(--qs-heading-compact-color);
+	color: var(--qs-heading-compact-color);
+	background-color: var(--qs-transparent-color);
+}
+
+body.vscode-light .filter-checkbox:checked {
+	background: var(--qs-heading-compact-color) !important;
+}
+
+body.vscode-light .filter-checkbox::before {
+	background-color: var(--primary-background-color);
+}
+
+body.vscode-light .filtersTitle,
+body.vscode-light .filter-tag {
+	color: var(--primary-background-light-color)
+}
+
+body.vscode-light .filter-tag {
+	background-color: #BE95FF !important
+}
+
+body.vscode-light .filter-radio {
+	border: 1px solid var(--qs-heading-compact-color)
+}
+
+body.vscode-light .filter-radio:checked:before {
+	background: var(--qs-heading-compact-color);
+}
+
+body.vscode-light .bx--tree-btn {
+	background-color: var(--qs-transparent-color);
+}
+
+body.vscode-light button.function-tree-btn:focus,
+body.vscode-light button.function-tree-btn::selection {
+	background-color: var(--qs-light-title-bar);
+}
+
+body.vscode-light .no-asset-wrapper,
+body.vscode-light .no-vulnerability-wrapper {
+	border-top: 1px solid var(--qs-light-title-bar);
+	border-bottom: 1px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .bx--text-input,
+body.vscode-light .parameter-tracing-wrapper .bx--tree .bx--tree-node .bx--tree-btn:hover,
+body.vscode-light .function-calls-tile .bx--tree .bx--tree-node .bx--tree-btn:hover {
+	background-color: var(--qs-light-title-bar);
+}
+
+body.vscode-light .properties-tile .bx--data-table td,
+body.vscode-light .properties-tile .bx--data-table tbody th {
+	border-top: 1px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .left-partition {
+	border-left: 1px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .bg-header-accordion {
+	background-color: var(--qs-light-title-bar);
+	border-left: 3px solid var(--qs-border-left-color);
+}
+
+.custom-accordion__heading svg.bx--icon {
+	z-index: 0;
+}
+
+body.vscode-light .function-calls-tile .bg-header-accordion,
+body.vscode-light .vulnerabilities-tile .bg-header-accordion {
+	border-left: 3px solid var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-light .bx--tile,
+body.vscode-light .grid-item,
+body.vscode-light .filter-wrapper,
+body.vscode-light #filterTags,
+body.vscode-light .custom-accordion__item,
+body.vscode-light .donut-chart-container .vulnerabilities-chart,
+body.vscode-light .donut-chart-container .algorithms-chart {
+	background-color: var(--primary-background-color);
+}
+
+body.vscode-light .donut-chart-container .vulnerabilities-chart,
+body.vscode-light .donut-chart-container .algorithms-chart {
+	background-color: var(--primary-background-color);
+	color: var(--qs-heading-compact-color)
+}
+
+body.vscode-light .crypto-filters:hover,
+body.vscode-light .crypto-filters:focus {
+	background-color: var(--qs-light-title-bar);
+}
+
+body.vscode-light .crypto-filters {
+	background: var(--primary-background-color);
+	border-bottom: 0.8px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .bx--table-body-cell {
+	border-bottom: 1px solid var(--qs-light-title-bar);
+	color: var(--primary-background-light-color);
+}
+
+body.vscode-light .function-calls-desc,
+body.vscode-light .vulnerabilities-desc {
+	background-color: var(--primary-background-color);
+	border-left: 3px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light button.function-tree-btn:focus,
+body.vscode-light button.function-tree-btn::selection,
+body.vscode-light .search-input {
+	background-color: var(--qs-light-title-bar);
+}
+
+body.vscode-light .filter-accordion__item,
+body.vscode-light .no-asset-wrapper {
+	border-top: 1px solid var(--qs-light-title-bar);
+	border-bottom: 1px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .bx--dropdown--open .bx--dropdown-item::before {
+	border-top: 1px solid var(--qs-light-title-bar);
+}
+
+body.vscode-light .search-input {
+	border-bottom: 1px solid var(--qs-heading-compact-color);
+}
+
+body.vscode-light .bx--table-head-cell {
+	color: var(--qs-table-heading-color);
+}
+
+body.vscode-light span.fn-prefix {
+	color: var(--qs-table-heading-color);
+}
+
+body.vscode-light .tooltip-filter .tooltiptext,
+body.vscode-light .tooltip-vul-ref .tooltiptext,
+body.vscode-light .compliance--tooltip__active .tooltiptext,
+body.vscode-light .compliance--tooltip__active .tooltiptext::after,
+body.vscode-light .tooltip-switch .tooltiptext {
+	background-color: var(--qs-light-title-bar);
+}
+
+body.vscode-light .tooltip-filter .tooltiptext::after,
+body.vscode-light .tooltip-vul-ref .tooltiptext::after,
+body.vscode-light .tooltip-switch .tooltiptext::after {
+	border-color: var(--qs-light-title-bar) transparent transparent transparent;
+}
+
+body.vscode-light .open-accordian-heading {
+	background-color: var(--qs-light-title-bar);
+	border-left: 3px solid var(--qs-table-heading-color);
+}
+
+body.vscode-light .crypt-header-stats,
+body.vscode-light .bx--result-notification__title {
+	color: var(--qs-dark-text-highlight-color);
+}
+
+body.vscode-light .highlight-doc {
+	background: var(--qs-light-title-bar);
+	border-left: 3px solid var(--qs-table-heading-color);
+}
+
+body.vscode-light .highlight-item {
+	background: var(--qs-light-title-bar);
+	border-left: 3px solid var(--qs-border-left-color);
+}
+
+body.vscode-light .info-label {
+	fill: var(--qs-heading-compact-color);
+}
+
+.vscode-light .dropdown-list li.dropdown-item {
+	color: var(--qs-heading-compact-color)
+}
+
+.vscode-light .function-calls-tile ul.nested.active {
+	border-left: 3px solid var(--qs-light-title-bar);
+}
+
+/*
+ * IBM Confidential
+ * PID 5900-B4I
+ * Copyright (c) IBM Corp. 2025
+ */
+
+body {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
+body.vscode-dark {
+  background-color: var(--qs-dark-background);
+}
+
+.qs--header {
+  margin-bottom: 5px;
+  display: inline-flex;
+  gap: 5px;
+  width: 100%;
+  justify-content: space-between;
+  min-height: 34px;
+  margin-top: -12px;
+  padding: 12px 0;
+}
+
+.qs--header__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.qs--header__title .company-title {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  /* 128.571% */
+  letter-spacing: 0.16px;
+}
+
+.qs--header__title .brand-title {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.16px;
+  padding-right: 32px;
+}
+
+.qs--header__title .product-title {
+  padding-left: 32px;
+}
+
+img.qs--logo {
+  width: 24px;
+  height: 24px;
+}
+
+.applications-result-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.file-list-container.fold-down+.result-container {
+  width: calc(100% - 405px);
+}
+
+.file-list-container.fold-up+.result-container {
+  width: calc(100% - 55px);
+}
+
+
+.file-list-container {
+  position: relative;
+  height: calc(100vh - 80px);
+}
+
+.file-list-container.fold-down {
+  width: 400px;
+}
+
+.file-list-container.fold-up {
+  min-width: 50px;
+}
+
+#noFileSystemWrapper {
+  text-align: center;
+}
+
+#noResultsWrapper {
+  padding: 0 !important;
+}
+
+.file-system-fold {
+  transform: rotate(90deg);
+  position: absolute;
+  font-size: 12px !important;
+  cursor: pointer;
+}
+
+.fold-down.file-system-fold {
+  right: 1.4rem;
+  top: 1.4rem;
+}
+
+.fold-up.file-system-fold {
+  right: 1.2rem;
+  top: 1.4rem;
+}
+
+#noResultFilesWrapper {
+  margin-top: 150px;
+}
+
+/* THEME SWITCHER */
+
+.qs--theme__switcher.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Container for the switch */
+.qs--theme__switcher .switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Hide the default checkbox */
+.qs--theme__switcher .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.qs--theme__switcher .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+/* The knob inside the slider */
+.qs--theme__switcher .slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* When checked, change background color */
+.qs--theme__switcher .switch input:checked+.slider {
+  background-color: #42BE65;
+}
+
+/* Move the knob to the right when checked */
+.qs--theme__switcher .switch input:checked+.slider::before {
+  transform: translateX(26px);
+}
+
+
+/* Custom scrollbar for file list */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html:has(.vscode-dark) {
+  scrollbar-color: rgba(121, 121, 121, 0.4) #1e1e1e;
+}
+
+.vscode-dark ::-webkit-scrollbar-corner {
+  background-color: #1e1e1e;
+}
+
+html:has(.vscode-light) {
+  scrollbar-color: #fff #cccccc70;
+}
+
+.vscode-light ::-webkit-scrollbar-corner {
+  background-color: #cccccc70;
+}
+
+.vscode-dark .qs--loader__overlay {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.vscode-light .qs--loader__overlay {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.vscode-dark .qs--header {
+  background: #121619;
+  border-bottom: 1px solid var(--Default-Cool-Gray-70, #4D5358);
+
+}
+
+.vscode-dark .qs--header__title .brand-title {
+  border-right: 1px solid var(--Default-Cool-Gray-70, #4D5358);
+}
+
+.vscode-light .qs--header {
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.vscode-light .qs--header__title .brand-title {
+  border-right: 1px solid #e0e0e0;
+}
+
+.vscode-dark .qs--header__title .product-title {
+  color: var(--Text-Text-02, #C1C7CD);
+}
+/*
+ * IBM Confidential
+ * PID 5900-B4I
+ * Copyright (c) IBM Corp. 2025
+ */
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .custom-tooltip {
+	background: var(--darkContrast-text-color);
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.30);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .custom-tooltip .bx--tooltip__caret {
+	border-bottom: 0.42969rem solid var(--darkContrast-text-color);
+	border: 1px solid;
+	display: none;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .custom-tooltip .tooltip-label {
+	color: var(--primary-background-light-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .custom-tooltip .file-type-list li {
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .custom-tooltip .file-type-list li:hover {
+	outline: 1px solid var(--lightContrast-outline-color);
+	outline-offset: -3px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tooltiptext.tooltip-right {
+	background: var(--lightContrast-bg-color) !important;
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltiptext.tooltip-right {
+	background: var(--darkContrast-bg-color) !important;
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--tabs.left-panel-standard {
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"],
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--text-input {
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--tooltip.custom-tooltip {
+	background: var(--lightContrast-bg-color);
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tooltip .tooltiptext,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tooltip-switch .tooltiptext {
+	border: 1px solid var(--lightContrast-border-color);
+	background: var(--lightContrast-bg-color);
+	color: var(--lightContrast-text-color);
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .breadcrumb-btn,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .dir-button {
+	fill: var(--qs-heading-compact-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filter-accordion__heading,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .horizontal-radio-group label.bx--radio-button__label,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .search-input,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tooltip .tooltiptext p,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tooltip-close-icon,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .info-icon {
+	color: var(--lightContrast-text-color);
+	fill: var(--lightContrast-text-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filter-checkbox {
+	border: 1px solid var(--qs-heading-compact-color);
+	color: var(--qs-heading-compact-color);
+	background-color: var(--qs-transparent-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filter-checkbox:checked {
+	background: var(--lightContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filter-checkbox::before {
+	background-color: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filtersTitle,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filter-tag {
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filter-tag {
+	border: 1px solid var(--lightContrast-border-color);
+	background-color: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filter-radio {
+	border: 1px solid var(--qs-heading-compact-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filter-radio:checked:before {
+	background: var(--qs-heading-compact-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--tree-btn {
+	background-color: var(--qs-transparent-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] button.function-tree-btn:focus,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] button.function-tree-btn::selection {
+	background-color: var(--qs-light-title-bar);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .no-asset-wrapper,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .no-vulnerability-wrapper {
+	border-bottom: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--text-input,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .parameter-tracing-wrapper .bx--tree .bx--tree-node .bx--tree-btn:hover,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .function-calls-tile .bx--tree .bx--tree-node .bx--tree-btn:hover {
+	background-color: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--text-input:focus-visible {
+	outline: 2px solid var(--lightContrast-outline-color);
+	outline-offset: -5px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--accordion__item:last-child {
+	border-bottom: none;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #searchArticfects:focus-visible {
+	outline: 2px solid var(--lightContrast-outline-color);
+	outline-offset: -4px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #searchArticfects {
+	border-bottom: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #filterGrid .filter-wrapper {
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .properties-tile .bx--data-table td,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .properties-tile .bx--data-table tbody th {
+	border-top: 1px solid var(--lightContrast-border-color);
+	border-bottom: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .left-partition {
+	border-left: 1px solid var(--lightContrast-border-color);
+}
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .custom-accordion__heading svg.bx--icon,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-accordion__heading svg.bx--icon {
+	z-index: 0;
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .grid-item,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filter-wrapper,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #filterTags,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .custom-accordion__item,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .asset-wrapper .donut-chart-container .vulnerabilities-chart,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .asset-wrapper .donut-chart-container .algorithms-chart {
+	background-color: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .asset-wrapper {
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .asset-wrapper .donut-chart-container .vulnerabilities-chart,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .asset-wrapper .donut-chart-container .algorithms-chart {
+	background-color: var(--lightContrast-bg-color);
+	color: var(--lightContrast-text-color);
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #languageFilterWrapper .language-dropdown #dropdown {
+	background-color: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .crypto-filters:hover,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .crypto-filters:focus {
+	background-color: var(--qs-light-title-bar);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .crypto-filters {
+	background: var(--lightContrast-bg-color);
+	border-bottom: 0.8px solid var(--qs-light-title-bar);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--table-body-cell {
+	border-bottom: 1px solid var(--lightContrast-border-color);
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .trace-panel-title {
+	border-bottom: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .trace-panel {
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .function-calls-desc,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .vulnerabilities-desc {
+	background-color: var(--lightContrast-bg-color);
+	border-left: 3px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] button.function-tree-btn:focus,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] button.function-tree-btn::selection,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .search-input {
+	background-color: var(--lightContrast-bg-color);
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .no-asset-wrapper {
+	border-top: 1px solid var(--lightContrast-border-color);
+	border-bottom: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .filter-accordion__item {
+	border-bottom: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--dropdown--open .bx--dropdown-item::before {
+	border-top: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--dropdown--open .bx--dropdown-list {
+	background-color: var(--lightContrast-bg-color);
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .dropdown-list button.bx--dropdown-item:hover {
+	outline: 1px solid var(--lightContrast-outline-color);
+	outline-offset: -1px;
+	background-color: var(--lightContrast-hover-bg-color);
+
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .search-input {
+	border-bottom: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .search-input:focus-visible {
+	outline: 2px solid var(--lightContrast-outline-color) !important;
+	outline-offset: -5px !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--table-head-cell {
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tooltip-filter .tooltiptext {
+	background-color: var(--qs-light-title-bar);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tooltip-filter .tooltiptext::after {
+	border: 1px solid;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltip-filter .tooltiptext::after {
+	border: 1px solid;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .open-accordian-heading {
+	background-color: var(--qs-light-title-bar);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .crypt-header-stats {
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--dropdown {
+	background-color: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .language-label label {
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .custom-tooltip::after {
+	border: 1px solid;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-tooltip::after {
+	border: 1px solid;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .function-call-wrapper span.clickable:hover,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .function-call-wrapper span.clickable.selected {
+	background-color: var(--function-call-highlight-light);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-tooltip .bx--tooltip__caret {
+	border: 1px solid;
+	display: none;
+	border-bottom: 0.42969rem solid var(--qs-dark-background);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .highlight-doc {
+	background: var(--qs-light-title-bar);
+	border-left: 3px solid var(--qs-border-left-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .highlight-item {
+	background: var(--lightContrast-hover-bg-color);
+	outline: 1px solid var(--lightContrast-outline-color) !important;
+	outline-offset: -2px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .donut-chart-container .vulnerabilities-chart,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .donut-chart-container .algorithms-chart {
+	background-color: var(--lightContrast-bg-color);
+	color: var(--lightContrast-text-color);
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--accordion__item {
+	border-top: none;
+}
+
+/* ---- High Dark Contrast Theme ---- */
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .function-call-wrapper span.clickable:hover,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .function-call-wrapper span.clickable.selected {
+	background-color: var(--function-call-highlight-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltip-switch .tooltiptext::after {
+	border-color: var(--darkContrast-border) transparent transparent transparent;
+	color: var(--darkContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltip .tooltiptext,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltip-switch .tooltiptext {
+	border: 1px solid var(--darkContrast-border);
+	background-color: var(--darkContrast-bg-color);
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	color: var(--darkContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .trace-panel-title {
+	border-bottom: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .trace-panel {
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-tooltip {
+	background: var(--darkContrast-bg-color);
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.30);
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-tooltip .tooltip-label {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-tooltip .file-type-list li {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-tooltip .file-type-list li:hover {
+	outline: 1px solid var(--darkContrast-hover-color);
+	outline-offset: -3px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .breadcrumb-btn {
+	fill: var(--qs-nav-back-button-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .dir-button {
+	fill: var(--primary-background-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .countOfassets {
+	color: var(--qs-nav-count-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bckBtnNav {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .open-accordian-heading {
+	background-color: var(--qs-dark-highlight-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltip .tooltiptext p
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltip-switch .tooltiptext,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .info-icon,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltip-close-icon,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .legend-title,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-tooltip .file-type-list li {
+	color: var(--darkContrast-text-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"],
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--tree-btn {
+	background-color: var(--qs-transparent-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .legend-list span {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filter-checkbox {
+	border: 1px solid var(--darkContrast-text-color);
+	color: var(--darkContrast-text-color) !important;
+	background-color: var(--qs-transparent-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filter-checkbox:checked {
+	background: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filter-checkbox::before {
+	background-color: var(--darkContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filter-radio:checked:before {
+	background: var(--darkContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .no-asset-wrapper,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filter-accordion__item,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .properties-tile .bx--data-table td,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .properties-tile .bx--data-table tbody th {
+	border-top: 1px solid var(--darkContrast-border);
+	border-bottom: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--tabs.left-panel-standard {
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-accordion__item {
+	border-top: none;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-accordion__item:last-child {
+	border-bottom: none;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--dropdown--open .bx--dropdown-item::before {
+	border-top: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .function-calls-tile .custom-accordion__item {
+	border: 0;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .crypto-filters {
+	background: var(--darkContrast-bg-color);
+	border-bottom: 0.8px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .function-calls-desc,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .vulnerabilities-desc {
+	border-left: 3px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .left-partition {
+	border-left: 1px solid var(--darkContrast-border);
+}
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"],
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] tr td,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] tr th,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--text-input,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--accordion__heading,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--tree-btn,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--inline-loading__text {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] tr th {
+	border-bottom: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] tr:hover {
+	outline: 1px dashed var(--darkContrast-hover-color);
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] tr:hover {
+	background: var(--lightContrast-hover-bg-color);
+	outline: 1px dashed var(--lightContrast-outline-color);
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--content-switcher-btn__label[aria-selected="false"] {
+	color: #fff;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .grid-item,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-accordion__item,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .function-calls-desc,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .vulnerabilities-desc,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .metrics-wrapper .bx--tile,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .no-metrics-wrapper .bx--tile,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--tile.parameter-tracing-tile,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--tile.properties-tile,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--tile.function-calls-tile,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--tile.vulnerabilities-tile,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--tile.function-calls-tile .bx--tree .bx--tree-node,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--tile.parameter-tracing-tile .bx--tree .bx--tree-node,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--data-table td,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--data-table tbody th,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] #filterTags,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filter-wrapper {
+	background-color: var(--darkContrast-bg-color);
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .asset-wrapper .donut-chart-container .vulnerabilities-chart,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .asset-wrapper .donut-chart-container .algorithms-chart {
+	background-color: var(--darkContrast-bg-color);
+	color: var(--darkContrast-text-color) !important;
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--table-body-cell,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .function-calls-tile .bx--tree .bx--tree-node .bx--tree-btn:hover,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .parameter-tracing-wrapper .bx--tree .bx--tree-node .bx--tree-btn:hover,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] button.function-tree-btn:focus,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] button.function-tree-btn::selection,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .crypto-filters:hover,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .crypto-filters:focus,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .search-input {
+	background-color: var(--qs-dark-highlight-color);
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filter-tag {
+	color: var(--darkContrast-text-color) !important;
+	background: var(--darkContrast-bg-color);
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--text-input {
+	background: var(--darkContrast-bg-color);
+	border-bottom: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-accordion__heading:hover::before {
+	background: transparent;
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--accordion__item.custom-accordion__item button:hover {
+	background: var(--darkContrast-hover-bg-color);
+	outline: 1px dashed var(--darkContrast-hover-color);
+	outline-offset: -1px;
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bg-header-accordion {
+	background: var(--darkContrast-bg-color) !important;
+	outline: 1px solid var(--darkContrast-hover-color) !important;
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filter-wrapper {
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] #assetGrid .asset-wrapper {
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] #matricesWrapper {
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] div#chartContainer {
+	z-index: 9999;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--accordion__heading.custom-accordion__heading.function-calls,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .function-calls.bg-header-accordion,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .function-calls-desc,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--accordion__heading.custom-accordion__heading.vulnerabilities,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .vulnerabilities.bg-header-accordion,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .vulnerabilities-desc,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .vul-text,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--label,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filter-accordion__heading,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .horizontal-radio-group label.bx--radio-button__label {
+	color: var(--darkContrast-text-color) !important;
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .vulnerabilities-desc .vulnerability-status-header {
+	color: var(--darkContrast-highlightText-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--data-table tbody th,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--table-head-cell {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filtersTitle {
+	color: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] ::placeholder {
+	color: var(--darkContrast-placeholder-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .search-input {
+	border-bottom: 1px solid var(--darkContrast-border);
+}
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .filter-radio {
+	border: 1px solid var(--darkContrast-text-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tag-wrapper .filter-icon-button svg {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltip-filter .tooltiptext {
+	background-color: var(--qs-dark-highlight-color);
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .crypt-header-stats {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .link-text,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .footer-link a {
+	color: var(--darkContrast-link-text-color) !important;
+	fill: var(--darkContrast-link-text-color) !important;
+	text-decoration: underline;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .link-text svg {
+	text-decoration: none;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .highlight-doc {
+	background: var(--qs-dark-highlight-color);
+	border-left: 3px solid var(--qs-border-left-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .highlight-item {
+	background: var(--darkContrast-bg-color);
+	outline: 1px solid var(--darkContrast-hover-color) !important;
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .vul-length {
+	color: var(--qs-vul-lenght-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .vul-text {
+	color: var(--darkContrast-highlightText-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .donut-chart-container .vulnerabilities-chart,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .donut-chart-container .algorithms-chart {
+	background-color: var(--darkContrast-bg-color);
+	color: var(--darkContrast-text-color);
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tag-wrapper .filter-icon-button svg,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .chart-collapse-icon .codicon {
+	color: var(--darkContrast-text-color) !important;
+	fill: var(--darkContrast-text-color) !important;
+}
+
+/***Crypto metadata dark****/
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .col {
+	border-top: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .additional-info h4 {
+	color: var(--darkContrast-text-color) Im !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .additional-col-key {
+	color: var(--darkContrast-text-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .additional-col-val {
+	color: var(--darkContrast-text-color)
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] section.relevant-tags span.tag {
+	border: 1px solid var(--darkContrast-border);
+	color: var(--darkContrast-text-color) !important;
+	background-color: var(--darkContrast-bg-color);
+}
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .relevant-tags h4,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .head-title h2 {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] #searchInput:focus-visible,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--text-input:focus-visible {
+	outline: 2px solid var(--darkContrast-hover-color) !important;
+	outline-offset: -5px !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--tooltip__trigger svg {
+	fill: var(--darkContrast-text-color) !important;
+}
+
+/***Crypto meta data light contrst styles**/
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] ::placeholder {
+	color: var(--lightContrast-input-placeholder-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--tooltip__trigger svg {
+	fill: var(--lightContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] section.relevant-tags span.tag {
+	background-color: var(--lightContrast-bg-color);
+	color: var(--lightContrast-text-color);
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .col {
+	border-top: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .key-clr {
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--accordion__item.custom-accordion__item button:hover::before {
+	background-color: transparent;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--accordion__item.custom-accordion__item button:hover {
+	background: var(--lightContrast-hover-bg-color);
+	outline: 1px dashed var(--lightContrast-outline-color);
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bg-header-accordion {
+	background: var(--lightContrast-hover-bg-color);
+	outline: 1px solid var(--lightContrast-outline-color) !important;
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--data-table tbody tr:hover td,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--data-table tbody tr:hover th {
+	background-color: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--data-table tbody tr td,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--data-table tbody tr th {
+	background-color: var(--lightContrast-bg-color);
+}
+
+/**** graph dark styles***/
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] #project-name-container .folder-path {
+	color: var(--primary-background-color);
+	background-color: var(--primary-background-light-color);
+	border: 1px solid var(--highlighted-dark-background);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .scan-result-wrapper {
+	background: var(--qs-dark-highlight-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .findings-container {
+	background: var(--darkContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] #project-name-container .save-to-csv {
+	color: var(--primary-background-color);
+	background-color: var(--primary-background-light-color);
+	border: 1px solid var(--qs-white-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] #project-name-container .save-to-csv:hover {
+	color: var(--text-color);
+	background-color: var(--primary-background-color);
+}
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .scan-info-container div {
+	color: var(--primary-background-light-color);
+	background-color: var(--scaninfo-row-background-color);
+}
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .scan-result-row .scan-result-header .label-header,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .finding-title p,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .finding-title h1,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .findings-container th,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .findings-container td {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .table-arrow {
+	fill: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .scan-result-row .scan-result-header .label-value {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .graph-item-container .graph-item {
+	background-color: var(--darkContrast-bg-color);
+	color: var(--darkContrast-text-color) !important;
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .findings-container th {
+	background-color: var(--highlighted-dark-background);
+	color: var(--primary-background-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .findings-container td {
+	border-bottom: 1px solid var(--highlighted-dark-background);
+	border-top: 1px solid var(--primary-background-light-color);
+	color: var(--secondary-background-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .findings-container tr:hover {
+	background: var(--findings-hover-color);
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .accordion-name {
+	background-color: var(--primary-background-light-color);
+	border: 1px solid var(--highlighted-dark-background);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] button.accordion-name:focus-visible {
+	border: 1px solid var(--primary-background-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--pagination,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--data-table thead,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--data-table thead th {
+	background-color: inherit;
+	color: var(--darkContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] li.bx--multi-select__menu-item {
+	background-color: var(--darkContrast-bg-color);
+	border-bottom: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--multi-select__menu-item:hover {
+	outline: 1px dashed var(--darkContrast-hover-color);
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--multi-select__menu-item:has(.filter-checkbox[aria-selected="true"]) {
+	outline: 1px solid var(--darkContrast-hover-color);
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--pagination .pagination-section-wrapper .bx--pagination__button:hover {
+	background-color: var(--qs-transparent-color);
+	outline: 1px dashed var(--darkContrast-hover-color);
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--pagination .pagination-section-wrapper svg {
+	fill: var(--darkContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--pagination .pagination-section-wrapper .codicon {
+	color: var(--darkContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .bx--pagination .pagination-section-wrapper .bx--pagination__button[disabled] .codicon {
+	opacity: 0.5;
+}
+
+/*Light Contrast Theme For Flat Inventory*/
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--pagination,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--data-table thead,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--data-table thead th {
+	background-color: inherit;
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] li.bx--multi-select__menu-item {
+	background-color: var(--lightContrast-bg-color);
+	border-bottom: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--multi-select__menu-item:hover {
+	outline: 1px dashed var(--lightContrast-hover-bg-color);
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--multi-select__menu-item:has(.filter-checkbox[aria-selected="true"]) {
+	outline: 1px solid var(--lightContrast-hover-bg-color);
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--pagination .pagination-section-wrapper .bx--pagination__button:hover {
+	background-color: var(--qs-transparent-color);
+	outline: 1px dashed var(--lightContrast-hover-bg-color);
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--pagination .pagination-section-wrapper svg {
+	fill: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--pagination .pagination-section-wrapper .codicon {
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--pagination .pagination-section-wrapper .bx--pagination__button[disabled] .codicon {
+	opacity: 0.5;
+}
+
+/***graph light contrst styles***/
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tab-list .bx--tabs__nav-item--selected {
+	outline: 1px solid var(--lightContrast-outline-color) !important;
+	outline-offset: -2px;
+	background: var(--lightContrast-hover-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--tabs__nav-item:hover:not(.bx--tabs__nav-item--disabled) {
+	outline: 1px dashed var(--lightContrast-outline-color);
+	outline-offset: -2px;
+	background: var(--lightContrast-hover-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #project-name-container .folder-path {
+	color: var(--text-color);
+	background-color: var(--primary-background-color);
+	border: 1px solid var(--qs-transparent-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #project-name-container .save-to-csv {
+	color: var(--text-color);
+	background-color: var(--primary-background-color);
+	border: 1px solid var(--qs-white-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #project-name-container .save-to-csv:hover {
+	color: var(--text-color);
+	background-color: var(--secondary-background-color);
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .scan-info-container div {
+	color: var(--primary-background-color);
+	background-color: var(--scaninfo-row-background-color);
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .scan-result-row .scan-result-header {
+	color: var(--text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .graph-item-container .graph-item {
+	background-color: var(--primary-background-color);
+	color: var(--text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .table-arrow {
+	fill: var(--text-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .scan-result-wrapper,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .findings-container {
+	background-color: var(--primary-background-color);
+}
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .findings-container th {
+	background-color: var(--secondary-background-color);
+	color: var(--text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .findings-container td {
+	border-bottom: 1px solid var(--secondary-background-color);
+	border-top: 1px solid var(--primary-background-color);
+	color: var(--text-color);
+}
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .accordion-name {
+	background-color: var(--primary-background-color);
+	border: 1px solid var(--qs-transparent-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] button.accordion-name:focus-visible {
+	border: 1px solid var(--text-color);
+}
+
+/*** Standrad styles ****/
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .donut-chart-container.standard .standard-chart {
+	background-color: var(--lightContrast-bg-color);
+	color: var(--lightContrast-text-color);
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .last-nested button:hover {
+	outline: 1px dashed var(--lightContrast-outline-color);
+	outline-offset: -1px;
+	background: var(--lightContrast-hover-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .crypto-results-section {
+	background: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .panel-tabs .explorer-section#results {
+	border-right: 1px solid var(--lightContrast-border-color);
+	background: var(--lightContrast-bg-color);
+}
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .chevron-down {
+	fill: var(--primary-background-light-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .info-label {
+	fill: var(--qs-heading-compact-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .title-bar,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .findings-list th {
+	background: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .title-bar {
+	border-top: 1px solid var(--lightContrast-border-color);
+	border-bottom: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .explorer-tree,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #metaSection {
+	background: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #metaSection,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #results {
+	border-right: 1px solid var(--lightContrast-border-color);
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .graph-instances,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .graph-libraries,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tab-container {
+	background: var(--lightContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .findings-list tr {
+	border-bottom: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .link-text,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .footer-link a {
+	color: var(--lightContrast-link-text-color) !important;
+	text-decoration: underline;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .link-text svg {
+	color: var(--lightContrast-link-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tooltiptext.tooltip-top {
+	background: var(--lightContrast-bg-color);
+	color: var(--lightContrast-text-color);
+	border: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltiptext.tooltip-top {
+	background: var(--darkContrast-bg-color);
+	color: var(--darkContrast-text-color) !important;
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tooltip-vul-ref .tooltip-top.tooltiptext::after {
+	color: var(--lightContrast-bg-color);
+	border: 1px solid;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .tooltip-switch .tooltiptext::after {
+	border-color: var(--lightContrast-border-color) transparent transparent transparent;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tooltip-vul-ref .tooltip-top.tooltiptext::after {
+	color: var(--darkContrast-bg-color);
+	border: 1px solid;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .findings-list {
+	background: var(--lightContrast-bg-color);
+	border-top: 1px solid var(--lightContrast-border-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .function-name {
+	fill: var(--primary-background-light-color);
+}
+
+
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .dropdown-list li.dropdown-item {
+	color: var(--qs-heading-compact-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .donut-chart-container.discovery .discovery-chart {
+	background-color: var(--lightContrast-bg-color);
+	color: var(--qs-heading-compact-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .caret,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .artefact-title {
+	color: var(--text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .crypto-results-section #noCryptoArtifacts,
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .panel-tabs .vulnerability-wrapper .no-vulnerability-wrapper {
+	color: var(--lightContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] #matricesWrapper {
+	background: var(--lightContrast-bg-color);
+	border: 1px solid var(--lightContrast-border-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] .bx--tile {
+	background: var(--lightContrast-bg-color);
+}
+
+/*** Dark High contrast theme ***/
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] {
+	background: var(--darkContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .caret,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .artefact-title {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .title-bar {
+	background: var(--darkContrast-bg-color);
+	border-top: 1px solid var(--darkContrast-border);
+	border-bottom: 1px solid var(--darkContrast-border);
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .explorer-tree {
+	background: var(--darkContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] #metaSection {
+	border-right: 1px solid var(--darkContrast-border);
+	background: var(--darkContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .last-nested button:hover {
+	outline: 1px dashed var(--darkContrast-hover-color);
+	background: var(--darkContrast-hover-bg-color);
+	outline-offset: -1px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-dropdown.bx--dropdown--open .dropdown-list {
+	border: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .dropdown-list button.bx--dropdown-item:hover {
+	outline: 1px solid var(--darkContrast-hover-color);
+	outline-offset: -5px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .dropdownList .dropdown-item:first-child {
+	border-top: none;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .crypto-results-section {
+	background: var(--darkContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .panel-tabs .explorer-section#results {
+	border-right: 1px solid var(--darkContrast-border);
+	background: var(--darkContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .graph-instances,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .graph-libraries,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tab-container {
+	background: var(--darkContrast-bg-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tab-list button {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tab-list button:hover {
+	outline: 1px dashed var(--darkContrast-hover-color);
+	outline-offset: -3px;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .function-name {
+	fill: var(--darkContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .findings-list th {
+	background: var(--darkContrast-bg-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .custom-select select {
+	background: var(--darkContrast-bg-color);
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .chevron-down {
+	fill: var(--darkContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .select-arrow {
+	fill: var(--darkContrast-text-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .explorer-tree,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] #metaSection {
+	background: var(--darkContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] #treeWrapper li,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .additional-col-val,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .additional-info h4 {
+	color: var(--darkContrast-text-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .additional-title,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .relevant-tags h4 {
+	color: var(--darkContrast-text-color)
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .findings-list tr {
+	border-bottom: 1px solid var(--darkContrast-border);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .last-nested li:hover {
+	border-left: 3px solid var(--qs-border-left-color);
+	background: var(--qs-dark-highlight-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .tab-list .bx--tabs__nav-item--selected {
+	color: var(--darkContrast-text-color);
+	background: var(--darkContrast-bg-color);
+	outline: 1px solid var(--darkContrast-hover-color) !important;
+	outline-offset: -3px;
+}
+
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .dropdown-button {
+	background: var(--darkContrast-bg-color);
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .dropdown-list {
+	background: var(--darkContrast-bg-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .dropdown-list button {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .findings-list {
+	background: var(--darkContrast-bg-color);
+	border-top: 1px solid var(--darkContrast-border);
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .dropdown-list .dropdown-item {
+	color: var(--qs-dark-text-description-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .info-label {
+	fill: var(--qs-dark-text-description-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .label-language {
+	color: var(--qs-dark-text-description-color);
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .donut-chart-container.discovery .discovery-chart {
+	background-color: var(--darkContrast-bg-color);
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .crypto-results-section #noCryptoArtifacts,
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .panel-tabs .vulnerability-wrapper .no-vulnerability-wrapper {
+	color: var(--darkContrast-text-color) !important;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] .donut-chart-container.standard .standard-chart {
+	background-color: var(--darkContrast-bg-color);
+	color: var(--darkContrast-text-color) !important;
+	border: 1px solid var(--darkContrast-border);
+}
+/*
+ * IBM Confidential
+ * PID 5900-B4I
+ * Copyright (c) IBM Corp. 2025
+ */
+
+
+body {
+	font-family: var(--qs-ibm-font-family);
+}
+
+.table {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.row {
+	display: table-row;
+}
+
+.col {
+	display: table-cell;
+	padding: 7px 10px 7px 2px; 
+}
+
+div.hide, section.hide{
+	display: none;
+}
+
+div.show, section.show{
+	display: block;
+}
+
+section.vulnerabilities .table {
+	width: 100%;
+}
+
+section.head-title {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.head-title h2{
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal; 
+}
+.relevant-tags h4{
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal; 
+	margin: 14px 0px;
+}
+
+section.head-title .save-to-csv {
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px; /* 128.571% */
+	letter-spacing: 0.16px; 
+	margin: 0.83em 0;
+	padding:7px 16px;
+	border-radius: 2.5px;
+	font-family: var(--qs-ibm-font-family);
+	color: var(--qs-white-color);
+	background: var(--qs-button-background-color);
+}
+
+section.head-title .save-to-csv svg{
+	margin-left: 50px;
+}
+
+section.head-title .save-to-csv.disabled {
+	opacity: 0.2;
+	pointer-events: none;
+}
+
+section.relevant-tags,
+section.vulnerabilities .vulnerable-section.table {
+	margin-bottom: 14px;
+}
+
+section.relevant-tags span.tag {
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 12.1px; 
+	align-items: center;
+	display: inline-block;
+	border-radius: 12px;
+	box-sizing: border-box;
+	padding: 6px 8px;
+	vertical-align: middle;
+	word-break: break-word;
+}
+
+section.vulnerabilities .vulnerability-title {
+	font-size: .875rem;
+	font-weight: 400;
+	letter-spacing: .16px;
+	line-height: 1.42857;
+	margin: 0 0 0 1rem;
+	text-align: left;
+	border-bottom: 0;
+}
+
+section.vulnerabilities .vulnerability-description {
+	margin: 0;
+	border-top: 0;
+}
+
+section.additional-info .col.additional-col-key {
+	width: 18%;
+}
+
+section.additional-info .subcontext-col-key {
+	width: 70px;
+	border: 0;
+	white-space: nowrap;
+}
+.additional-info h4{
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 112.5% */
+	letter-spacing: 0.16px; 
+	margin: 7px 10px 7px 2px; 
+}
+
+section.additional-info .subcontext-col-val {
+	width: 100%;
+}
+
+.no-padding {
+	padding: 0;
+}
+
+/* Project Name Styles */
+
+#project-name-container {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#project-name-container .folder-path {
+	width: fit-content;
+    align-items: center;
+    border-radius: 0.9375rem;
+    box-sizing: border-box;
+    font-weight: 400;
+    line-height: 1.9;
+    margin: 2px 0 5px 0;
+    max-width: 100%;
+    min-height: 1.5rem;
+    min-width: 2rem;
+    padding: 0.25rem 0.5rem;
+    vertical-align: middle;
+    word-break: break-word;
+}
+
+#project-name-container .save-to-csv {
+	cursor: pointer;
+	font-weight: 400;
+    line-height: 1.9;
+	margin: 2px 0 5px 0;
+	padding: 0.25rem 0.5rem;
+	font-size: inherit;
+}
+
+/* Scan Info Styles */
+
+.scan-info-container {
+	display: flex;
+    gap: 4px;
+    padding: 0 2px; 
+}
+
+.scan-info-container div {
+	width: 400px;
+	padding: 10px;
+	margin-bottom: 5px;
+}
+
+/* Graph Styles */
+
+.graph-container, .findings-container {
+	margin-bottom: 6px;
+	overflow: auto;
+}
+.scan-result-wrapper{
+	margin-bottom: 6px;
+}
+
+.scan-result-row {
+	width: 100%;
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.scan-result-row .scan-result-header {
+	padding: 16px 16px 12px 12px; 
+	font-weight: normal;
+    text-align: left;
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.scan-result-row .scan-result-header label.label-header {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+.scan-result-row .scan-result-header label.label-value {
+    font-size: 60px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 60px;
+}
+
+.graph-item-container {
+	display: flex;
+	gap: 6px;
+}
+
+.graph-item-container .graph-item {
+	border: transparent;
+    min-height: 6rem;
+    padding: 1rem;
+    width: auto;
+    word-break: break-word;
+}
+
+/* Findings Styles */
+
+.findings-container {
+	max-height: 410px;
+    overflow: overlay;
+    width: 100%;
+}
+
+.findings-container table {
+	border-collapse: collapse;
+}
+
+.findings-container th {
+	border: transparent;
+	padding: 7px 16px;
+	text-align: left;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 128.571% */
+	letter-spacing: 0.16px; 
+}
+.table-arrow{
+	float: right;
+}
+
+.findings-container td {
+	padding: 7px 16px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px; /* 128.571% */
+	letter-spacing: 0.16px; 
+}
+
+#findings-container .fixed-width-l {
+	max-width: 350px;
+	min-width: 350px;
+	width: 350px;
+	word-wrap: break-word;
+}
+
+#findings-container .fixed-width-m {
+	max-width: 300px;
+	min-width: 300px;
+	width: 300px;
+	word-wrap: break-word;
+}
+
+#findings-container .fixed-width-s {
+	max-width: 150px;
+	min-width: 150px;
+	width: 150px;
+	word-wrap: break-word;
+}
+
+#findings-container .fixed-width-xs {
+	max-width: 80px;
+    min-width: 80px;
+    width: 80px;
+    word-wrap: break-word;
+}
+
+/* Tabs Styles */
+
+.accordion-name {
+	cursor: pointer;
+	padding: 10px;
+	width: 100%;
+	text-align: left;
+	outline: none;
+	font-size: 14px;
+	transition: 0.4s;
+	margin: 2px 2px 5px 2px;
+	font-weight: 400;
+	text-transform: capitalize;
+    color: inherit;
+  }
+  
+  .accordion-name:after {
+	content: '\002B';
+	font-weight: bold;
+	float: right;
+	margin-left: 5px;
+  }
+  
+  .active.accordion-name:after {
+	content: "\2212";
+  }
+  
+  .accordian-content {
+	overflow: hidden;
+	transition: auto 0.2s ease-out;
+  }
+
+  .finding-title{
+	padding: 16px 16px 24px 16px;
+  }
+
+  .finding-title h1{
+	font-size: 28px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 36px;
+	margin: 0px;
+  }
+  .finding-title p{
+	margin: 0px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px; /* 128.571% */
+	letter-spacing: 0.16px; 
+  }
+/*
+ * IBM Confidential
+ * PID 5900-B4I
+ * Copyright (c) IBM Corp. 2025
+ */
+
+
+body.vscode-dark .additional-info h4 {
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .additional-col-key {
+	color: var(--qs-dark-text-description-color)
+}
+
+body.vscode-dark .additional-col-val {
+	color: var(--qs-dark-text-color)
+}
+
+body.vscode-dark section.relevant-tags span.tag {
+	background-color: var(--section-border-dark);
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .relevant-tags h4,
+body.vscode-dark .head-title h2 {
+	color: var(--qs-white-color);
+}
+
+
+/* Project Name Styles */
+
+body.vscode-dark #project-name-container .folder-path {
+	color: var(--primary-background-color);
+	background-color: var(--primary-background-light-color);
+	border: 1px solid var(--highlighted-dark-background);
+}
+
+body.vscode-dark .scan-result-wrapper {
+	background: var(--qs-dark-highlight-color);
+}
+
+body.vscode-dark .findings-container {
+	background: var(--qs-dark-background-color);
+}
+
+body.vscode-dark #project-name-container .save-to-csv {
+	color: var(--primary-background-color);
+	background-color: var(--primary-background-light-color);
+	border: 1px solid var(--qs-white-color);
+}
+
+body.vscode-dark #project-name-container .save-to-csv:hover {
+	color: var(--text-color);
+	background-color: var(--primary-background-color);
+}
+
+/* Scan Info Styles */
+
+body.vscode-dark .scan-info-container div {
+	color: var(--primary-background-light-color);
+	background-color: var(--scaninfo-row-background-color);
+}
+
+/* Graph Styles */
+
+body.vscode-dark .scan-result-row .scan-result-header .label-header,
+body.vscode-dark .finding-title p,
+body.vscode-dark .finding-title h1,
+body.vscode-dark .findings-container th,
+body.vscode-dark .findings-container td {
+	color: var(--qs-dark-text-color);
+}
+
+body.vscode-dark .table-arrow {
+	fill: var(--qs-dark-text-color)
+}
+
+body.vscode-dark .scan-result-row .scan-result-header .label-value {
+	color: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .graph-item-container .graph-item {
+	background-color: var(--qs-dark-background-color);
+	color: var(--qs-dark-text-description-color);
+}
+
+/* Findings Styles */
+
+body.vscode-dark .findings-container th {
+	background-color: var(--highlighted-dark-background);
+	color: var(--primary-background-color);
+}
+
+body.vscode-dark .findings-container td {
+	border-bottom: 1px solid var(--highlighted-dark-background);
+	border-top: 1px solid var(--primary-background-light-color);
+	color: var(--secondary-background-color);
+}
+
+body.vscode-dark .findings-container tr:hover {
+	background: var(--findings-hover-color);
+}
+
+/* Tabs Styles */
+
+body.vscode-dark .accordion-name {
+	background-color: var(--primary-background-light-color);
+	border: 1px solid var(--highlighted-dark-background);
+}
+
+body.vscode-dark button.accordion-name:focus-visible {
+	border: 1px solid var(--primary-background-color);
+}
+
+body.vscode-light .key-clr {
+	color: var(--text-color);
+}
+
+body.vscode-light section.relevant-tags span.tag {
+	background-color: var(--secondary-background-color);
+	color: var(--text-color);
+}
+
+/* Project Name Styles */
+
+body.vscode-light #project-name-container .folder-path {
+	color: var(--text-color);
+	background-color: var(--primary-background-color);
+	border: 1px solid var(--qs-transparent-color);
+}
+
+body.vscode-light #project-name-container .save-to-csv {
+	color: var(--text-color);
+	background-color: var(--primary-background-color);
+	border: 1px solid var(--qs-white-color);
+}
+
+body.vscode-light #project-name-container .save-to-csv:hover {
+	color: var(--text-color);
+	background-color: var(--secondary-background-color);
+}
+
+/* Scan Info Styles */
+
+body.vscode-light .scan-info-container div {
+	color: var(--primary-background-color);
+	background-color: var(--scaninfo-row-background-color);
+}
+
+/* Graph Styles */
+
+body.vscode-light .scan-result-row .scan-result-header {
+	color: var(--text-color);
+}
+
+body.vscode-light .graph-item-container .graph-item {
+	background-color: var(--primary-background-color);
+	color: var(--text-color);
+}
+
+body.vscode-light .table-arrow {
+	fill: var(--text-color)
+}
+
+body.vscode-light .scan-result-wrapper,
+body.vscode-light .findings-container {
+	background-color: var(--primary-background-color);
+}
+
+/* Findings Styles */
+
+body.vscode-light .findings-container th {
+	background-color: var(--secondary-background-color);
+	color: var(--text-color);
+}
+
+body.vscode-light .findings-container td {
+	border-bottom: 1px solid var(--secondary-background-color);
+	border-top: 1px solid var(--primary-background-color);
+	color: var(--text-color);
+}
+
+/* Tabs Styles */
+
+body.vscode-light .accordion-name {
+	background-color: var(--primary-background-color);
+	border: 1px solid var(--qs-transparent-color);
+}
+
+body.vscode-light button.accordion-name:focus-visible {
+	border: 1px solid var(--text-color);
+}
+
+
+.vscode-light #metaSection {
+	border-right: 1px solid var(--qs-light-title-bar);
+}
+
+.vscode-light .last-nested button:hover {
+	background: var(--qs-light-title-bar);
+}
+
+.vscode-light .crypto-results-section {
+	background: var(--primary-background-color);
+}
+
+.vscode-light .panel-tabs .explorer-section#results {
+	border-right: 1px solid var(--qs-light-title-bar);
+	background: var(--primary-background-color);
+}
+
+/* GRAPH & TABS STYLES */
+
+.vscode-light .chevron-down {
+	fill: var(--primary-background-light-color);
+}
+
+.vscode-light .info-label {
+	fill: var(--qs-heading-compact-color);
+}
+
+.vscode-light .title-bar,
+.vscode-light .findings-list th,
+.vscode-light .tab-list .bx--tabs__nav-item--selected {
+	background: var(--qs-light-title-bar);
+}
+
+.vscode-light .title-bar {
+	border-right: 1px solid var(--primary-background-color);
+	border-bottom: 1px solid var(--primary-background-color);
+}
+
+.vscode-light .explorer-section#suggestiveSection {
+	border-top: 1px solid var(--primary-background-color);
+}
+
+.custom-select select:focus {
+	outline: none;
+}
+
+.vscode-light .explorer-tree,
+.vscode-light #metaSection,
+.vscode-light #vulnerabilitySection {
+	background: var(--primary-background-color);
+}
+
+.vscode-light .col {
+	border-top: 1px solid var(--qs-light-title-bar)
+}
+
+.vscode-light .last-nested li:hover {
+	border-left: 3px solid var(--qs-border-left-color);
+	background: var(--qs-light-title-bar);
+}
+
+.vscode-light .graph-instances,
+.vscode-light .graph-libraries,
+.vscode-light .tab-container {
+	background: var(--primary-background-color);
+}
+
+.vscode-light .findings-list tr,
+.vscode-light .inventory-table tbody td {
+	border-top: 1px solid var(--qs-light-title-bar);
+	border-bottom: 1px solid var(--qs-light-title-bar);
+}
+
+.vscode-light .filter-row input {
+	background-color: var(--primary-background-color) !important;
+}
+
+.vscode-light .findings-list,
+/* .vscode-light .bx--tab-content__item .bx--pagination { */
+.vscode-light .bx--pagination {
+	background: var(--primary-background-color);
+}
+
+.vscode-light .function-name {
+	fill: var(--primary-background-light-color);
+}
+
+.vscode-light .dropdown-list button {
+	border-bottom: 1px solid var(--qs-light-title-bar)
+}
+
+.vscode-light .dropdown-list li.dropdown-item {
+	color: var(--qs-heading-compact-color)
+}
+
+body.vscode-light .donut-chart-container.standard .standard-chart {
+	background-color: var(--primary-background-color);
+	color: var(--qs-heading-compact-color)
+}
+
+.vscode-light .caret,
+.vscode-light .artefact-title {
+	color: var(--text-color);
+}
+
+.vscode-light .inventory-table tbody tr[data-selected=true] td {
+	background-color: var(--table-hover-light);
+}
+
+/* .vscode-light .bx--tab-content__item .bx--pagination button { */
+.vscode-light .bx--pagination button {
+	border-left: 1px solid var(--qs-light-title-bar);
+	border-right: 1px solid var(--qs-light-title-bar);
+}
+
+.vscode-light .bx--pagination .pagination-section-wrapper:nth-child(1) {
+	border-right: 1px solid var(--qs-light-title-bar);
+}
+
+.vscode-light .bx--pagination .pagination-section-wrapper:nth-child(3),
+.vscode-light .bx--pagination .pagination-section-wrapper:nth-child(4) {
+	border-left: 1px solid var(--qs-light-title-bar);
+}
+
+/* ---- */
+
+
+.vscode-dark {
+	background: var(--qs-dark-background);
+}
+
+.vscode-dark .caret,
+.vscode-dark .artefact-title {
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .title-bar {
+	color: var(--qs-dark-text-color);
+	border-right: 1px solid var(--qs-dark-background-color);
+	border-bottom: 1px solid var(--qs-dark-background-color);
+	background: var(--qs-dark-highlight-color);
+}
+
+.vscode-dark #metaSection {
+	border-right: 1px solid var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .explorer-section#suggestiveSection {
+	border-top: 1px solid var(--qs-dark-background-color);
+}
+
+.vscode-dark .last-nested button:hover {
+	background: var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .crypto-results-section {
+	background: var(--qs-dark-background-color);
+}
+
+.vscode-dark .panel-tabs .explorer-section#results {
+	border-right: 1px solid var(--qs-dark-highlight-color);
+	background: var(--qs-dark-background-color);
+}
+
+/* GRAPH & TABS STYLES */
+
+.vscode-dark .graph-instances,
+.vscode-dark .graph-libraries,
+.vscode-dark .tab-container {
+	background: var(--qs-dark-background-color)
+}
+
+.vscode-dark .tab-list button {
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .function-name {
+	fill: var(--qs-dark-text-color);
+}
+
+.vscode-dark .title-bar,
+.vscode-dark .findings-list th {
+	background: var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .custom-select select {
+	background: var(--qs-dark-background-color);
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .chevron-down {
+	fill: var(--qs-dark-text-color);
+}
+
+.vscode-dark .select-arrow {
+	fill: var(--qs-dark-text-color);
+}
+
+.vscode-dark .explorer-tree,
+.vscode-dark #metaSection,
+.vscode-dark #vulnerabilitySection {
+	background: var(--qs-dark-background-color);
+}
+
+.vscode-dark #treeWrapper li,
+.vscode-dark .additional-col-val,
+.vscode-dark .additional-info h4 {
+	color: var(--qs-dark-text-color)
+}
+
+.vscode-dark .additional-col-key {
+	color: var(--qs-dark-text-description-color)
+}
+
+.vscode-dark .additional-title,
+.vscode-dark .relevant-tags h4 {
+	color: var(--qs-white-color)
+}
+
+.vscode-dark .col {
+	border-top: 1px solid var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .findings-list tr,
+.vscode-dark .inventory-table tbody td {
+	border-top: 1px solid var(--qs-dark-highlight-color);
+	border-bottom: 1px solid var(--qs-dark-highlight-color);
+
+}
+
+.vscode-dark .filter-row input {
+	background-color: var(--qs-dark-background-color) !important;
+}
+
+.vscode-dark .last-nested li:hover {
+	border-left: 3px solid var(--qs-border-left-color);
+	background: var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .tab-list .bx--tabs__nav-item--selected {
+	color: var(--qs-dark-text-description-color);
+	background: var(--qs-dark-highlight-color) !important;
+}
+
+
+.vscode-dark .dropdown-button {
+	background: var(--qs-dark-background-color);
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .dropdown-list {
+	background: var(--qs-dark-background-color);
+}
+
+.vscode-dark .dropdown-list button.bx--dropdown-item:hover,
+.vscode-dark .bx--pagination button:hover {
+	background: var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .dropdown-list button {
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .findings-list,
+.vscode-dark .bx--pagination {
+	color: var(--qs-dark-text-color);
+	background: var(--qs-dark-background-color);
+}
+
+.vscode-dark  .bx--pagination {
+	border-color: var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .bx--pagination button {
+	color: var(--qs-dark-text-color);
+	border-left: 1px solid var(--qs-dark-highlight-color);
+	border-right: 1px solid var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .bx--pagination button:disabled {
+	opacity: 0.5;
+}
+
+.vscode-dark .dropdown-list .dropdown-item {
+	color: var(--qs-dark-text-description-color);
+}
+
+.vscode-dark .info-label {
+	fill: var(--qs-dark-text-description-color);
+}
+
+.vscode-dark .label-language {
+	color: var(--qs-dark-text-description-color);
+}
+
+body.vscode-dark .donut-chart-container.standard .standard-chart {
+	background-color: var(--qs-dark-background-color);
+	color: var(--qs-dark-text-description-color);
+}
+
+.vscode-dark .inventory-table tbody tr[data-selected=true] td {
+	background-color: var(--qs-dark-highlight-color);
+	color: var(--qs-dark-text-color);
+}
+
+/* ---- */
+
+
+body.vscode-light .crypto-results-section #noCryptoArtifacts,
+body.vscode-light .panel-tabs .vulnerability-wrapper .no-vulnerability-wrapper {
+	color: var(--text-color);
+}
+
+body.vscode-dark .crypto-results-section #noCryptoArtifacts,
+body.vscode-dark .panel-tabs .vulnerability-wrapper .no-vulnerability-wrapper {
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .bx--pagination .pagination-section-wrapper:nth-child(1) {
+	border-right: 1px solid var(--qs-dark-highlight-color);
+}
+
+.vscode-dark .bx--pagination .pagination-section-wrapper:nth-child(3),
+.vscode-dark .bx--pagination .pagination-section-wrapper:nth-child(4) {
+	border-left: 1px solid var(--qs-dark-highlight-color);
+}
+
+
+.vscode-dark .bx--multi-select__menu-item:has(.filter-checkbox[aria-selected="true"]) {
+	background-color: var(--section-border-dark);
+}
+
+.vscode-dark .filter-row input[type="checkbox"][aria-selected="false"] {
+	background-color: var(--qs-dark-highlight-color) !important;
+}
+
+.vscode-dark .bx--multi-select__menu {
+	background-color: var(--qs-dark-highlight-color);
+	color: var(--qs-dark-text-color);
+}
+
+.vscode-dark .bx--multi-select__menu-item label {
+	border-bottom: 1px solid var(--section-border-dark);
+}
+
+.vscode-dark .bx--multi-select__menu-item:hover {
+	background: var(--section-border-dark);
+}
+
+/* .vscode-light .bx--tab-content__item .bx--pagination { */
+.vscode-light .bx--pagination {
+	border-color: var(--qs-light-title-bar);
+}
+
+.vscode-light .bx--multi-select__menu-item:has(.filter-checkbox[aria-selected="true"]) {
+	background-color: var(--qs-light-title-bar);
+}
+
+.vscode-light .bx--multi-select__menu {
+	background-color: var(--primary-background-color);
+	color: var(--text-color);
+}
+
+.vscode-light .bx--multi-select__menu-item label {
+	border-bottom: 1px solid var(--qs-light-title-bar);
+}
+
+.vscode-light .bx--multi-select__menu-item:hover {
+	background: var(--qs-light-title-bar);
+}
+
+.vscode-light .inventory-filter-tag-wrapper .bx--tag.filter-tag {
+	background-color: var(--qs-light-title-bar) !important;
+}
+
+.vscode-dark .inventory-filter-tag-wrapper .bx--tag.filter-tag {
+	background-color: var(--section-border-dark) !important;
+}
+
+.vscode-dark .filter-row input[type=text]:focus,
+.vscode-dark .filter-row input[type=text]:active {
+	outline: 2px solid var(--primary-background-color);
+}
+/*
+ * IBM Confidential
+ * PID 5900-B4I
+ * Copyright (c) IBM Corp. 2025
+ */
+
+.file-list-container ul {
+    list-style-type: none;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+.file-list-container ul:first-child {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.file-list-container li.file-list-item.selected span.file {
+    border-left: 2px solid var(--qs-border-left-color);
+}
+
+.file-list-container .file {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 0 6px;
+    width: 100%;
+    height: 24px;
+    cursor: pointer;
+}
+
+.file-list-container .file span,
+.directory span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: normal;
+}
+
+.file-list-container .hidden {
+    display: none;
+}
+
+.file-list-container #uploadInput {
+    margin-top: 10px;
+}
+
+.file-list-item {
+    height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.file-list-container .selection-wrapper {
+    margin-bottom: 5px;
+    /* height: 150px; */
+}
+
+.file-list-container .selection-wrapper #selectFolderBtn {
+    margin-bottom: 12px;
+}
+
+.file-list-container .file-list-wrapper p {
+    text-wrap: wrap;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.16px;
+}
+
+.file-list-container .selection-wrapper p {
+    width: 100%;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.16px;
+    margin-bottom: 9px;
+    text-wrap: wrap;
+}
+
+.file-list-container .selection-wrapper h4,
+.file-list-container .file-list-wrapper h4 {
+    padding: 0 !important;
+}
+
+li span.directory {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    padding: 8px 6px;
+    cursor: pointer;
+    gap: 4px;
+    align-items: center;
+}
+
+.no-folder-results p {
+    text-wrap: wrap;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.16px;
+}
+
+#selectedFolderPath {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.16px;
+    padding: 15px 18px;
+    color: var(--Text-Text-03, #878D96);
+}
+
+.selection-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 16px 0;
+}
+
+.selection-title-wrapper h4 {
+    margin-bottom: 0;
+}
+
+.vscode-dark .file-list-container li.file-list-item.selected span.file {
+    color: var(--qs-white-color);
+}
+
+.vscode-dark .file-list-container .file {
+    color: var(--qs-dark-text-highlight-color);
+}
+
+.vscode-light .file-list-container .file-list-item:not(.selected) .file {
+    color: var(--qs-dark-text-highlight-color);
+}
+
+.vscode-dark li span.directory {
+    /* border-top: 1px solid var(--qs-dark-highlight-color); */
+}
+
+.vscode-light li span.directory {
+    /* border-top: 1px solid var(--qs-light-title-bar); */
+}
+
+.vscode-dark li span:hover,
+.vscode-dark li.selected span {
+    background-color: var(--qs-dark-highlight-color);
+}
+
+.vscode-light li span:hover,
+.vscode-light li.selected span {
+    background-color: var(--qs-light-title-bar);
+    color: var(--primary-background-light-color);
+}
+/*
+ * IBM Confidential
+ * PID 5900-B4I
+ * Copyright (c) IBM Corp. 2025
+ */
+
+.function-call-title {
+	display: flex;
+	gap: 6px;
+}
+
+.trace-panel {
+	min-height: 100px;
+	margin: 10px;
+	border: 1px solid;
+}
+
+.bx--tree-btn {
+	display: flex;
+	align-items: flex-end;
+	gap: 6px;
+}
+
+.bx--tree-node-label {
+	margin-left: 0;
+	display: flex;
+	align-items: center;
+	gap: 1px;
+}
+
+.trace-panel-title {
+	border-bottom: 1px solid;
+	padding: 6px;
+	overflow-wrap: anywhere;
+	line-height: normal;
+}
+
+.type-title {
+	font-weight: 600;
+}
+
+.trace-panel-body li.trace-list-item {
+	padding: 10px;
+	line-height: normal;
+}
+
+ul.nested-arguments {
+	overflow: auto;
+}
+
+.trace-title-label {
+	display: flex;
+}
+
+.item-title {
+	font-weight: 600;
+}
+
+.font-weight-normal {
+	font-weight: normal !important;
+}
+
+.line-number {
+	font-style: italic;
+	margin-left: 20px;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.non-clickable {
+	pointer-events: none !important;
+}
+
+span.called-by-elm {
+	display: flex;
+	align-items: center;
+}
+
+i.codicon.codicon-circle-slash.non-clickable {
+	font-size: 14px;
+}
+
+.fx-container.expanded {
+	width: 100% !important;
+    
+}
+
+.fx-container.animate-expanded{
+	animation: slideLeft 1s forwards;
+}
+
+.fx-container.collapsed {
+	animation: slideRight 1s forwards;
+}
+
+.grid-item .bx--tile.function-calls-tile .bx--tile-content {
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	align-items: center;
+}
+
+.fn-action-icons {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+@keyframes slideLeft {
+	0% {
+		transform: translateX(100%);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideRight {
+	0% {
+		transform: translateX(-100%);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+/* ---- Light Theme ---- */
+body.vscode-light .function-call-wrapper span.clickable:hover,
+body.vscode-light .function-call-wrapper span.clickable.selected {
+	background-color: #FA4D56;
+}
+
+body.vscode-light svg:not(.bx--loading__svg, .bx--inline-notification svg) {
+	fill: var(--Transparent-Transparent, var(--primary-background-light-color));
+	background-blend-mode: multiply;
+	overflow: inherit;
+}
+
+/* ---- Dark Theme ---- */
+body.vscode-dark .function-call-wrapper span.clickable:hover,
+body.vscode-dark .function-call-wrapper span.clickable.selected {
+	background-color: #D02670;
+}
+
+body.vscode-dark svg:not(.bx--loading__svg, .bx--inline-notification svg) {
+	fill: var(--Transparent-Transparent, var(--qs-dark-text-description-color));
+	background-blend-mode: multiply;
+	overflow: inherit;
+}
+
+/* ---- Contrast Theme ---- */
+.vscode-high-contrast[data-vscode-theme-name="Light High Contrast"] svg:not(.bx--loading__svg, .bx--inline-notification svg) {
+	fill: var(--Transparent-Transparent, var(--text-color));
+	background-blend-mode: multiply;
+	overflow: inherit;
+}
+
+.vscode-high-contrast[data-vscode-theme-name="Dark High Contrast"] svg:not(.bx--loading__svg, .bx--inline-notification svg) {
+	fill: var(--Transparent-Transparent, var(--qs-white-color));
+	background-blend-mode: multiply;
+	overflow: inherit;
+}
+/*
+ * IBM Confidential
+ * PID 5900-B4I
+ * Copyright (c) IBM Corp. 2025
+ */
+
+@media only screen and (max-width: 500px) {
+    .asset-container {
+        grid-column: 1/13;
+        grid-row: 2;
+    }
+
+    .asset-min-container {
+        grid-column: 2/13;
+        grid-row: 2;
+        max-width: 294px;
+    }
+
+    .filter-container {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+
+    .crypto-header-1 {
+        grid-column: 6/1;
+        grid-row: 1;
+    }
+
+    .crypto-header-2 {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .crypto-header-3 {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .crypto-header-4 {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .crypto-header-5 {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .crypto-header-6 {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    .grid-item {
+        grid-row: 3;
+        grid-column: 6/1;
+        width: 100% !important;
+    }
+
+    .grid-item.no-pd {
+        grid-column: 6/1 !important;
+        grid-row: 1 !important;
+    }
+
+    .vulnerabilities-grid {
+        grid-column: 6/1 !important;
+        grid-row: 2 !important;
+    }
+
+    .asset-wrapper {
+        display: flex !important;
+        flex-direction: column-reverse;
+    }
+
+    .donut-chart-container {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex !important;
+        gap: 5px;
+        overflow-y: auto;
+        min-width: 440px;
+    }
+
+    .vulnerabilities-chart,
+    .algorithms-chart {
+        margin-bottom: 0;
+    }
+
+    #languageResultsWrapper {
+        flex-wrap: nowrap;
+    }
+
+    .standard-wrapper .wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .donut-chart-container.standard {
+        display: flex;
+        gap: 5px;
+        flex-direction: row;
+        width: auto;
+    }
+
+    .explorer-section#results .explorer-tree {
+        width: 200px;
+    }
+
+    .vscode-light .crypto-header-wrapper {
+        background: var(--primary-background-color);
+    }
+
+    .vscode-dark .crypto-header-wrapper {
+        background: var(--qs-dark-background-color);
+    }
+
+    .container-main {
+        grid-template-columns: 17ch auto;
+    }
+
+    .grid-container {
+        margin-bottom: 25px;
+    }
+
+    .bx--tile.properties-tile .bx--table-body-cell.tooltip-cell .tooltiptext {
+        width: 100% !important;
+    }
+
+    .bx--tile.properties-tile {
+        min-height: 12rem;
+    }
+
+    .crypto-header-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .tab-list {
+        display: contents;
+    }
+
+    .tab-container {
+        justify-content: flex-start;
+    }
+
+    .tab-container .export-btn {
+        position: absolute;
+        right: 0px;
+    }
+
+    .bx--tabs__nav-item--selected:not(.bx--tabs__nav-item--disabled) {
+        display: block;
+    }
+
+    .bx--tabs__nav-item:hover:not(.bx--tabs__nav-item--disabled) {
+        background: none;
+    }
+
+    .tab-list button {
+        height: 33.6px;
+    }
+
+    .bx--tabs.left-panel-standard {
+        flex: 0 0 auto;
+        width: 100% !important;
+    }
+}
+
+@media only screen and (min-width:500px) and (max-width: 600px) {
+    .container-main {
+        grid-template-columns: 17ch auto;
+    }
+
+    .asset-container {
+        grid-column: 1/13;
+        grid-row: 2;
+    }
+
+    .asset-min-container {
+        grid-column: 2/13;
+        grid-row: 2;
+    }
+
+    .donut-chart-container {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex !important;
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .filter-container {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+
+    .crypto-header-1 {
+        grid-column: 6/1;
+        grid-row: 1;
+    }
+
+    .crypto-header-2 {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .crypto-header-3 {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .crypto-header-4 {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .crypto-header-5 {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .crypto-header-6 {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    .grid-item {
+        grid-row: 3 !important;
+        grid-column: 6/1 !important;
+        width: 100% !important;
+    }
+
+    .grid-item.no-pd {
+        grid-column: 6/1 !important;
+        grid-row: 1 !important;
+        width: 50% !important;
+    }
+
+    .vulnerabilities-grid {
+        grid-column: 6/1 !important;
+        grid-row: 2 !important;
+        width: 48% !important;
+    }
+
+    .asset-wrapper {
+        display: flex !important;
+        flex-direction: column-reverse;
+    }
+
+    .vulnerabilities-chart,
+    .algorithms-chart {
+        margin-bottom: 0;
+    }
+
+    #languageResultsWrapper {
+        flex-wrap: nowrap;
+    }
+
+    .standard-wrapper .wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .donut-chart-container.standard {
+        display: flex;
+        gap: 5px;
+        flex-direction: row;
+        width: auto;
+    }
+
+    .explorer-section#results .explorer-tree {
+        width: 200px;
+    }
+
+    .vscode-light .crypto-header-wrapper {
+        background: var(--primary-background-color);
+    }
+
+    .vscode-dark .crypto-header-wrapper {
+        background: var(--qs-dark-background-color);
+    }
+
+    .grid-container {
+        margin-bottom: 25px;
+    }
+
+    .bx--tile.properties-tile .bx--table-body-cell.tooltip-cell .tooltiptext {
+        width: 50% !important;
+    }
+
+    .crypto-header-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .tab-list {
+        display: contents;
+    }
+
+    .tab-container {
+        justify-content: flex-start;
+    }
+
+    .tab-container .export-btn {
+        position: absolute;
+        right: 0px;
+    }
+
+    .bx--tabs__nav-item--selected:not(.bx--tabs__nav-item--disabled) {
+        display: block;
+    }
+
+    .bx--tabs__nav-item:hover:not(.bx--tabs__nav-item--disabled) {
+        background: none;
+    }
+
+    .tab-list button {
+        height: 33.6px;
+    }
+
+    .bx--tabs.left-panel-standard {
+        flex: 0 0 auto;
+        width: 100% !important;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 867px) {
+    .standard-wrapper .wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .donut-chart-container.standard {
+        display: flex;
+        gap: 5px;
+        flex-direction: row;
+    }
+
+    div#standardChartContainer {
+        width: 100% !important;
+    }
+
+    .tab-list {
+        display: contents;
+    }
+
+    .tab-container {
+        justify-content: flex-start;
+    }
+
+    .tab-container .export-btn {
+        position: absolute;
+        right: 0px;
+    }
+
+    .bx--tabs__nav-item--selected:not(.bx--tabs__nav-item--disabled) {
+        display: block;
+    }
+
+    .bx--tabs__nav-item:hover:not(.bx--tabs__nav-item--disabled) {
+        background: none;
+    }
+
+    .tab-list button {
+        height: 33.6px;
+    }
+
+    .grid-item {
+        grid-row: 3 !important;
+        grid-column: 6/1 !important;
+        width: 100% !important;
+    }
+
+    .grid-item.no-pd {
+        grid-column: 6/1 !important;
+        grid-row: 1 !important;
+        width: 50% !important;
+    }
+
+    .vulnerabilities-grid {
+        grid-column: 6/1 !important;
+        grid-row: 2 !important;
+        width: 48% !important;
+    }
+
+    .asset-min-container {
+        grid-column: 4/12;
+        grid-row: 1;
+    }
+
+    .filter-container {
+        grid-column: 1/4;
+        grid-row: 1;
+    }
+
+    .grid-container {
+        margin-bottom: 25px;
+    }
+
+    .crypto-header-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .bx--tabs.left-panel-standard {
+        flex: 0 0 auto;
+        width: 100% !important;
+    }
+
+    .bx--tile.properties-tile .bx--table-body-cell.tooltip-cell .tooltiptext {
+        width: 49.5% !important;
+    }
+}
+
+@media only screen and (min-width: 867px) and (max-width: 991px) {
+    .standard-wrapper .wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .donut-chart-container.standard {
+        display: flex;
+        gap: 5px;
+        flex-direction: row;
+    }
+
+    .bx--tabs.left-panel-standard {
+        flex: 0 0 auto;
+        width: 100% !important;
+    }
+
+    div#standardChartContainer {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (min-width: 867px) and (max-width: 967px) {
+    .grid-item {
+        width: 49.5% !important;
+    }
+
+    .bx--tile.properties-tile .bx--table-body-cell.tooltip-cell .tooltiptext {
+        width: 49.5% !important;
+    }
+
+    .bx--tabs.left-panel-standard {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 1067px) {
+    .crypto-header-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+}
+/*
+ * IBM Confidential
+ * PID 5900-B4I
+ * Copyright (c) IBM Corp. 2025
+ */
+
+body {
+	font-family: var(--qs-ibm-font-family);
+}
+
+.table {
+	table-layout: fixed;
+	display: table;
+	width: 100%;
+}
+
+.row {
+	display: table-row;
+}
+
+.col {
+	display: table-cell;
+	padding: 7px 2px;
+}
+
+div.hide,
+section.hide {
+	display: none;
+}
+
+div.show,
+section.show {
+	display: block;
+}
+
+.panel-tabs {
+	display: flex;
+}
+
+#metaSection {
+	width: 65%;
+}
+
+section.vulnerabilities .table {
+	width: 100%;
+}
+
+.explorer-tree li,
+.explorer-tree li span {
+	font-size: 13px !important;
+	font-style: normal;
+	font-weight: 500 !important;
+	line-height: normal;
+}
+
+.explorer-tree>li>ul>li>button,
+.explorer-tree>li>ul>li>ul>li>button,
+.last-nested button {
+	padding: 7px 12px;
+}
+
+.explorer-tree>li>ul>li>ul>li> {
+	padding: 0px;
+}
+
+.additional-col-val {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 18px;
+	/* 128.571% */
+	letter-spacing: 0.16px;
+}
+
+.additional-col-key {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+	/* 128.571% */
+	letter-spacing: 0.16px;
+}
+
+.col-padding {
+	padding: 7px 2px;
+}
+
+.additional-title {
+	margin-bottom: 24px;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-top: 0px;
+	word-wrap: break-word;
+}
+
+.relevant-tags h4 {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-bottom: 14px;
+}
+
+#tagsList .tag {
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 12.1px;
+}
+
+.additional-info h4 {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px;
+	letter-spacing: 0.16px;
+	margin: 7px 2px;
+}
+
+section.vulnerabilities .vulnerable-section.table {
+	margin-bottom: 1.33em;
+}
+
+section.relevant-tags {
+	padding-bottom: 14px;
+}
+
+section.relevant-tags span.tag {
+	background-color: var(--section-border-dark);
+	color: var(--qs-dark-text-color);
+	align-items: center;
+	border-radius: 0.9375rem;
+	box-sizing: border-box;
+	font-weight: 400;
+	letter-spacing: .32px;
+	line-height: 1.9;
+	max-width: 100%;
+	min-height: 1.5rem;
+	min-width: 2rem;
+	padding: 6px 8px;
+	vertical-align: middle;
+	word-break: break-word;
+}
+
+section.vulnerabilities .vulnerability-title {
+	font-size: .875rem;
+	font-weight: 400;
+	letter-spacing: .16px;
+	line-height: 1.42857;
+	margin: 0 0 0 1rem;
+	text-align: left;
+	border-bottom: 0;
+}
+
+section.vulnerabilities .vulnerability-description {
+	margin: 0;
+	border-top: 0;
+}
+
+section.additional-info .col.additional-col-key {
+	width: 112px;
+}
+
+section.additional-info .col.additional-col-val {
+	word-wrap: break-word;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	word-break: break-word;
+}
+
+.col.additional-col-val .tooltip.info-tooltip {
+	margin-bottom: 0;
+}
+
+.col.additional-col-val .tooltip.info-tooltip .tooltiptext {
+	max-width: 300px;
+	right: 28%;
+}
+
+section.additional-info .subcontext-col-key {
+	width: 100px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+}
+
+section.additional-info .subcontext-col-val {
+	width: 100%;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 18px;
+	overflow-wrap: anywhere;
+}
+
+.no-padding {
+	padding: 0;
+}
+
+/* ---------------- */
+ul,
+.explorer-tree {
+	list-style-type: none;
+}
+
+.explorer-tree {
+	margin: 0;
+	padding: 0;
+}
+
+.caret {
+	cursor: pointer;
+	-webkit-user-select: none;
+	/* Safari 3.1+ */
+	-moz-user-select: none;
+	/* Firefox 2+ */
+	-ms-user-select: none;
+	/* IE 10+ */
+	user-select: none;
+	display: flex;
+	align-items: center;
+}
+
+.caret-disc {
+	-ms-transform: rotate(-90deg);
+	/* IE 9 */
+	-webkit-transform: rotate(-90deg);
+	/* Safari */
+	transform: rotate(-90deg);
+	margin-right: 6px;
+	width: 20px;
+}
+
+.caret-down .caret-disc {
+	-ms-transform: rotate(0deg);
+	/* IE 9 */
+	-webkit-transform: rotate(0deg);
+	/* Safari */
+	transform: rotate(0deg);
+}
+
+.caret-down::before {
+	-ms-transform: rotate(90deg);
+	/* IE 9 */
+	-webkit-transform: rotate(90deg);
+	/* Safari */
+	transform: rotate(90deg);
+}
+
+.nested {
+	display: none;
+}
+
+.active {
+	display: block;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.title-bar {
+	height: 30px;
+	padding: 7px 4px;
+	display: flex;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	text-transform: uppercase;
+
+}
+
+.chevron-down.rotate-right {
+	transform: rotate(-90deg);
+}
+
+.meta-wrapper {
+	padding: 10px 15px 0 15px;
+}
+
+.custom-select {
+	width: 300px;
+	position: relative;
+	cursor: pointer;
+}
+
+.select-arrow {
+	position: absolute;
+	right: 16px;
+	top: 12px;
+}
+
+.custom-select select {
+	padding: 0px 16px;
+	border-bottom: none;
+	cursor: pointer;
+}
+
+.crypto-results-section {
+	padding: 0;
+}
+
+.custom-dropdown {
+	width: 300px;
+	border-bottom: none;
+	cursor: pointer;
+}
+
+.dropdown-list button {
+	padding: 15px 16px;
+}
+
+#noCryptoArtifacts {
+	padding: 7px 18px;
+	top: 62px;
+}
+
+button.bx--dropdown-item.selected-lang::after {
+	position: absolute;
+	left: 0.4rem;
+	font-family: 'codicon';
+	content: '\eab2';
+	text-align: right;
+	flex-shrink: 0;
+	right: 10px;
+	padding: 2px 0;
+}
+
+/* GRAPH & TAB STYLES */
+
+.tab-list {
+	position: relative;
+}
+
+.tab-list button {
+	background: none;
+	border: none;
+	text-align: left;
+	padding: 8px 15px;
+	width: auto;
+}
+
+.tab-content {
+	padding: 0px;
+}
+
+.wrapper {
+	display: flex;
+}
+
+.graph-content {
+	width: 25%;
+	margin-left: 5px;
+}
+
+.graph-instances,
+.graph-libraries {
+	padding: 16px 11px;
+	margin-bottom: 5px;
+}
+
+.findings-list th,
+.findings-list td {
+	text-align: left;
+	padding: 7px 16px;
+	word-break: break-all;
+}
+
+.findings-list {
+	table-layout: fixed;
+	width: 100%;
+}
+
+.function-name {
+	float: right;
+}
+
+.dropdown-button {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+	/* 128.571% */
+	letter-spacing: 0.16px;
+	width: 100%;
+	cursor: pointer;
+	border: none;
+	text-align: left;
+	height: 100%;
+	padding: 4px 16px 12px 16px;
+}
+
+.dropdown-button svg {
+	float: right;
+	width: 25px;
+	height: 25px;
+	margin-bottom: 2px;
+}
+
+.dropdown-list button.bx--dropdown-item {
+	padding: 15px 16px;
+	background: none;
+	border: none;
+	text-align: left;
+	cursor: pointer;
+}
+
+.label-language {
+	padding-left: 16px;
+	display: flex;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	/* 133.333% */
+	letter-spacing: 0.32px;
+}
+
+.tooltip.language-tip {
+	margin-left: 8px;
+	position: relative;
+}
+
+.tick-mark {
+	float: right;
+}
+
+.explorer-section#results .explorer-tree {
+	max-height: 40rem;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.explorer-section#results {
+	flex: 0 0 auto;
+	width: 30%;
+}
+
+.bx--tabs.left-panel-standard {
+	flex: 0 0 auto;
+	width: calc(100% - 256px);
+}
+
+.no-charts-discovery {
+	display: none;
+}
+
+.no-standard-charts {
+	width: 100% !important;
+}
+
+div#standardChartContainer {
+	flex: 0 0 auto;
+	width: 250px;
+}
+
+.explorer-section#vulnerabilityWrapperSection {
+	flex: 0 0 auto;
+	width: 30%;
+}
+
+.explorer-section#metaSection {
+	flex: 0 0 auto;
+	width: 40%;
+}
+
+.explorer-section#vulnerabilitySection .vulnerabilities .custom-accordion__title,
+.explorer-section#suggestiveSection .vulnerabilities .custom-accordion__title {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+	letter-spacing: 0.16px;
+}
+
+.left-panel-standard {
+	margin-right: 6px;
+}
+
+.caret,
+.artefact-title {
+	background: none;
+	border: none;
+	width: 100%;
+	text-align: left;
+}
+
+.standard-chart {
+	width: 250px;
+	padding: 16px;
+	margin-bottom: 6px;
+	border-radius: 4px;
+}
+
+.tab-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.tab-container .export-btn {
+	padding: 0 2px;
+}
+
+.tab-container .export-btn .filter-icon-button.export-icon {
+	padding: 8px;
+}
+
+button.bx--tooltip__trigger.filter-icon-button.export-icon:focus {
+	outline: none;
+}
+
+.standard-tree-list .caret-disc {
+	min-width: 14px;
+}
+
+span.standard-artifact-name {
+	width: 100%;
+	word-wrap: break-word;
+}
+
+.standard-tree-list .caret {
+	align-items: center;
+}
+
+.standard-file-title,
+.artefact-title {
+	overflow-wrap: anywhere;
+}
+
+.icons-wrapper {
+	display: flex;
+	align-items: center;
+	padding: 0 12px;
+}
+
+.icons-wrapper button {
+	margin-right: 0;
+}
+
+.info-tooltip.standard-tooltip {
+	margin-bottom: 0;
+}
+
+.tooltip.standard-tooltip .tooltiptext {
+	text-transform: none;
+	width: 340px;
+}
+
+.tooltip.standard-tooltip.info-tooltip.active {
+	position: relative;
+}
+
+span#dropdownSelected,
+.vul-legend-text {
+	text-transform: capitalize;
+}
+
+.sort-inventory {
+	transform: rotate(180deg);
+}
+
+.sorted {
+	transform: rotate(360deg) !important;
+}
+
+.sort-inventory rect,
+.sorted rect {
+	fill: transparent;
+}
+
+.inventory-container-wrapper {
+	display: flex;
+	color: var(--qs-white-color);
+	align-items: center;
+	gap: 10px;
+	padding: 10px;
+}
+
+.inventory-table tr.filter-row {
+	height: 4rem;
+}
+
+.bx--data-table-container#findings-container {
+	padding-top: 0;
+	/* overflow-x: auto !important; */
+}
+
+.inventory-table.bx--data-table tbody tr:hover td,
+.inventory-table.bx--data-table tbody tr:hover th {
+	border-color: transparent;
+}
+
+.filter-row .search-container svg {
+	right: 6px;
+	left: unset;
+}
+
+.filter-row input[type=text] {
+	padding-right: 30px;
+	cursor: pointer;
+}
+
+.filter-row input[type=text]:focus,
+.filter-row input[type=text]:active {
+	cursor: unset;
+}
+
+.inventory-table tbody td {
+	padding: 0.4rem 1rem;
+}
+
+.inventory-table.bx--data-table {
+	table-layout: fixed;
+}
+
+.inventory-table.bx--data-table th.small,
+.inventory-table.bx--data-table td.small {
+	width: 100px;
+}
+
+.inventory-table.bx--data-table th.medium,
+.inventory-table.bx--data-table td.medium {
+	width: 200px;
+}
+
+.inventory-table.bx--data-table th.large,
+.inventory-table.bx--data-table td.large {
+	width: 400px;
+}
+
+.inventory-table.bx--data-table th,
+.inventory-table.bx--data-table td {
+	overflow-wrap: break-word;
+}
+
+.bx--tab-content__item .bx--pagination button {
+	width: 50px;
+}
+
+.bx--pagination .pagination-section-wrapper {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	padding: 0 1rem;
+}
+
+.bx--pagination .gap-0 {
+	gap: 0 !important;
+	padding: 0 !important;
+}
+
+.bx--pagination .pagination-section-wrapper select {
+	background-color: inherit !important;
+	color: inherit;
+	border: none;
+}
+
+.bx--pagination .pagination-section-wrapper:nth-child(1) {
+	width: max-content;
+	padding-right: 0;
+}
+
+.bx--pagination .pagination-section-wrapper:nth-child(3) {
+	width: max-content;
+	padding-left: 0;
+}
+
+.bx--pagination .pagination-section-wrapper:nth-child(2) {
+	width: 100%;
+}
+
+.bx--pagination .pagination-section-wrapper .bx--select__arrow {
+	right: 0;
+}
+
+.bx--pagination .pagination-section-wrapper .bx--select-input__wrapper {
+	width: auto;
+}
+
+.bx--pagination .pagination-section-wrapper .items-per-page-header {
+	width: 102px;
+}
+
+.bx--pagination .pagination-section-wrapper .total-pages-header {
+	min-width: 68px;
+}
+
+.bx--pagination .pagination-section-wrapper .bx--pagination__button .codicon {
+	font-size: 12px;
+}
+
+.bx--pagination .pagination-section-wrapper span {
+	font-size: .875rem;
+}
+
+/*------------ INVENTORY FILTER STYLES -----------*/
+.bx--multi-select {
+	position: relative;
+	width: 100%;
+}
+
+.bx--multi-select__menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	max-height: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-top: none;
+	border-radius: 4px;
+	z-index: 10;
+	display: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.bx--multi-select__menu.show {
+	display: block;
+}
+
+.bx--multi-select__menu-item {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+}
+
+label.bx--multi-select__menu-item-label {
+	overflow-wrap: anywhere;
+	padding: 7px 0;
+	cursor: pointer;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.inventory-filter-tag-wrapper {
+	position: absolute;
+	top: 8px;
+	left: 0;
+}
+
+.tag-search {
+	transform: rotate(180deg) !important;
+	top: 11px !important;
+}
+
+.dropdown-button[aria-expanded="true"] svg {
+	transform: rotate(180deg);
+	margin-bottom: -6px;
+}
+
+.inventory-filter-tag-wrapper .filter-tag .bx--tag__close-icon {
+	margin: 0 0 0 .125rem;
+}
+
+.inventory-table .search-container .search-icon {
+	width: 25px;
+	height: 25px;
+	top: 17px;
+}
+
+.inventory-table .bx--multi-select__menu-item .filter-checkbox::before {
+	margin-top: 2px !important;
+}
+
+.filter-checkbox:focus-within {
+	outline: none;
+}
+
+.bx--multi-select__menu-item .filter-checkbox {
+	width: 16px;
+	height: 16px;
+}
+
+.bx--multi-select__menu-item .filter-checkbox::before {
+	width: 10px;
+	height: 10px;
+}
+
+.bx--radio-button-group.horizontal-radio-group {
+	padding: 0 16px;
+}
+/*
+ * IBM Confidential
+ * PID 5900-B4I
+ * Copyright (c) IBM Corp. 2025
+ */
+
+:root {
+	--qs-ibm-font-family: "IBM Plex Sans";
+	--qs-unknown-icon:#8D8D8D;
+	--text-color: #161616;
+	--scaninfo-row-background-color: #dad8d8;
+	--findings-hover-color: #353535;
+	--secondary-background-color: #c6c6c6;
+	--primary-background-color: #f4f4f4;
+	--primary-background-light-color: #262626;
+	--qs-light-title-bar: #E0E0E0;
+	--qs-dark-highlight-color: #343A3F;
+	--qs-dark-background-color: #21272A;
+	--qs-dark-text-highlight-color: #878D96;
+	--qs-dark-text-description-color: #C1C7CD;
+	--qs-white-color: #ffffff;
+	--qs-transparent-color: transparent;
+	--qs-placeholder-color: #697077;
+	--qs-link-secondary: #A6C8FF;
+	--qs-accent-blue-color: #007ACC;
+	--qs-heading-compact-color: #525252;
+	--qs-default-blue-color: #78A9FF;
+	--qs-table-heading-color: #6F6F6F;
+	--qs-dark-background: #121619;
+	--qs-nav-count-color: #BCBCBC;
+	--qs-nav-back-button-color: #E8E8E8;
+	--qs-button-background-color: #0F62FE;
+	--qs-border-left-color: #4589FF;
+	--qs-vs-code-dark-color: #212121;
+	--highlighted-dark-background: #393939;
+	--qs-dark-text-color: #F2F4F8;
+	--qs-vul-lenght-color: #D0E2FF;
+	--function-call-highlight-color: #D02670;
+	--function-call-highlight-light: #FA4D56;
+	--section-border-dark: #4D5358;
+	--table-hover-light: #e5e5e5;
+
+	/**Dark high Contrast colors**/
+	--darkContrast-text-color: #FFFFFF;
+	--darkContrast-border: #6fc3df;
+	--darkContrast-hover-color: #f38518;
+	--darkContrast-bg-color: #000000;
+	--darkContrast-highlightText-color: #ffffffb3;
+	--darkContrast-hover-bg-color: #ffffff1a;
+	--darkContrast-placeholder-color: #ffffffb3;
+	--darkContrast-link-text-color: #21a6ff;
+	--darkContrast-purple-color:#8A3FFC;
+
+	/**Light high Contrast colors**/
+	--lightContrast-bg-color: #ffffff;
+	--lightContrast-description-color: #292929cc;
+	--lightContrast-text-color: #292929;
+	--lightContrast-border-color: #0f4a85;
+	--lightContrast-outline-color: #006bbd;
+	--lightContrast-hover-bg-color: #0f4a851a;
+	--lightContrast-link-text-color: #0f4a85;
+	--lightContrast-input-placeholder-color: #292929b3;
+
+}

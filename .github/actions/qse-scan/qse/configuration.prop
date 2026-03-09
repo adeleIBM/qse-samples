@@ -1,0 +1,9 @@
+VULNERABILITY_CONFIG_PATH=
+########################################################################################
+## Parameter        		| VULNERABILITY_CONFIG_PATH
+## Name             		| Vulnerability.json config file path
+## Characteristics  		| If not provided then the -vp argument will not be passed to QSE Scan
+##======================================================================================
+## Default Value    		| (Empty value)
+## Possible Values  		| <<cli_folder_path>>/vulnerability_severity.json
+##======================================================================================

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SoftwareIdentity xmlns="http://standards.iso.org/iso/19770/-2/2015/schema.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="IBM Quantum Safe Explorer" tagId="ibm.com-33849abc1e65429d809b59446542fa22-2.2.5" version="2.2.5" versionScheme="multipartnumeric" xml:lang="en" xsi:schemaLocation="http://standards.iso.org/iso/19770/-2/2015-current/schema.xsd schema.xsd">
+    <Meta persistentId="33849abc1e65429d809b59446542fa22"/>
+    <Meta generator="4-1-20210113"/>
+    <Entity name="IBM" regid="ibm.com" role="licensor tagCreator softwareCreator"/>
+</SoftwareIdentity>

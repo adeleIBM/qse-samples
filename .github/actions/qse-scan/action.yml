@@ -1,0 +1,74 @@
+name: "IBM Quantum Safe Explorer Scan"
+description: "Runs the embedded IBM QSE CLI against a target folder"
+author: "adeleIBM"
+
+inputs:
+  input_dir:
+    type: string
+    description: "Folder to scan (usually the checked-out repo)"
+    required: false
+    default: ${{ github.workspace }}
+
+  languages:
+    type: string
+    description: "Language list for QSE CLI"
+    required: false
+    default: "{.java,.jar,.py,.cpp,.go,.cs,.dart}"
+
+  scan_type:
+    type: choice
+    description: "Type of scan(s) to run"
+    required: false
+    options:
+      - api_discovery
+      - crypto_analysis
+      - both
+    default: api_discovery
+
+  java_class_path:
+    type: string
+    description: "Java class path for Cryptography Analysis"
+    required: false
+    default: "./java_files/"
+
+  output_dir:
+    type: string
+    description: "Output folder for QSE scan results"
+    required: false
+    default: "qse-scan-results"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Ensure CLI is executable
+      run: |
+        chmod +x "${GITHUB_ACTION_PATH}/qse/cli.sh"
+      shell: bash
+
+    - name: Cryptography Analysis Scan
+      if: inputs.scan_type == 'crypto_analysis' || inputs.scan_type == 'both'
+      run: |
+        cd "${GITHUB_ACTION_PATH}/qse"
+        ./cli.sh \
+          -i "${{ inputs.input_dir }}" \
+          -l ".java" \
+          -cf "${{ inputs.java_class_path }}" \
+          -da \
+          -o "${{ github.workspace }}/${{ inputs.output_dir }}"
+      shell: bash
+
+    - name: API Discovery Scan
+      if: inputs.scan_type == 'api_discovery' || inputs.scan_type == 'both'
+      run: |
+        cd "${GITHUB_ACTION_PATH}/qse"
+        ./cli.sh \
+          -i "${{ inputs.input_dir }}" \
+          -l "${{ inputs.languages }}" \
+          -o "${{ github.workspace }}/${{ inputs.output_dir }}"
+      shell: bash
+
+    - name: Upload QSE Scan Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: qse-scan-results
+        path: ${{ github.workspace }}/${{ inputs.output_dir }}
