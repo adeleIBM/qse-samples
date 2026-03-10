@@ -23,6 +23,7 @@ jobs:
         with:
           # If you want to scan a specific folder, set it here; otherwise scan repo root
           input_dir: ${{ github.workspace }}/sample_files
+          scan_type: both
           # Match your local CLI usage
           # Optional: override default output folder
           # output_dir: "qse-scan-results"

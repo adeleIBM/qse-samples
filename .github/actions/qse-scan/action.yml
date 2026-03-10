@@ -46,7 +46,7 @@ runs:
       shell: bash
 
     - name: Cryptography Analysis Scan
-      if: inputs.scan_type == 'crypto_analysis' || inputs.scan_type == 'both'
+      if: ${{ inputs.scan_type == 'crypto_analysis' || inputs.scan_type == 'both' }}
       run: |
         cd "${GITHUB_ACTION_PATH}/qse"
         ./cli.sh \
@@ -58,7 +58,7 @@ runs:
       shell: bash
 
     - name: API Discovery Scan
-      if: inputs.scan_type == 'api_discovery' || inputs.scan_type == 'both'
+      if: ${{ inputs.scan_type == 'api_discovery' || inputs.scan_type == 'both' }}
       run: |
         cd "${GITHUB_ACTION_PATH}/qse"
         ./cli.sh \
